@@ -10,14 +10,12 @@ class Solution:
         
         
         if x<0 or y<0 or x>=M or y>=N:
-            print("F")
             return False
         
         if grid[x][y] == '0':
-            print('F2:')
             return False
         
-        print("grid[x][y]",grid[x][y])
+        #print("grid[x][y]",grid[x][y])
         return True
     
     
@@ -34,20 +32,20 @@ class Solution:
                 if grid[i][j] == '1':
                     count+=1
                     grid[i][j] = 0
-                    print('-> ',i,j)
+                    #print('-> ',i,j)
                     q.append((i,j))
                     
                     while len(q)>0:
-                        print('-----',q)
+                        #print('-----',q)
                         temp = q.popleft()
                         
                         for k in range(0,4):
                             tempx = temp[0]+dirx[k]
                             tempy = temp[1]+diry[k]
-                            print(tempx,tempy)
+                            #print(tempx,tempy)
                             
                             if(self.isValid(tempx,tempy,grid)):
-                                print("in:")
+                                #print("in:")
                                 q.append((tempx,tempy))
                                 grid[tempx][tempy] = '0'
         
