@@ -10,11 +10,11 @@ class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         
         l = []
-        heapq.heapify(l)
+        
         for i in lists:
             temp = i
             while temp:
-                heapq.heappush(l,temp.val)
+                l.append(temp.val)
            
                 temp = temp.next
 
@@ -23,7 +23,7 @@ class Solution:
         Temp = ListNode()
         Head = Temp
         
-        
+        heapq.heapify(l)
         while l:
             
             j = heapq.heappop(l)
