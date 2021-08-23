@@ -30,11 +30,11 @@ class Solution:
         if len(tiles) == 1:
             return 1
         
-        if tiles == 'AAABBC':
-            return 188
+       # if tiles == 'AAABBC':
+         #   return 188
         
-        if tiles == 'DB':
-            return 4
+      #  if tiles == 'DB':
+         #   return 4
         
         for i in tiles:
             if i not in visited:
