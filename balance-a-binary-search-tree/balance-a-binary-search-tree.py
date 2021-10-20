@@ -1,35 +1,36 @@
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-from typing import List
-
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def balanceBST(self, root: TreeNode) -> TreeNode:
-        if not root:
-            return
-        return self.build(self.dfs(root))
-    
-    # Binary search tree to array
-    def dfs(self, root):
-        if not root:
-            return []
-        return self.dfs(root.left) + [root.val] + self.dfs(root.right)
-    
-    # Array dichotomy to build a balanced binary tree
-    def build(self, nums: List[int]) -> TreeNode:
-        if not nums:
-            return None
-        mid = len(nums) // 2
-        node = TreeNode(nums[mid])
-
-        left = nums[:mid]
-        right = nums[mid+1:]
-
-        node.left = self.build(left)
-        node.right = self.build(right)
+    def inorder(self,root):
+        if root is None:
+            return 
         
-        return node
+        self.inorder(root.left)
+        self.inorder_ar.append(root.val)
+        self.inorder(root.right)
+    
+    def balancedTree(self,arr):
+        if not arr:
+            return 
+        
+        mid = len(arr)//2
+        root = TreeNode(arr[mid])
+        root.right = self.balancedTree(arr[mid+1:])
+        root.left = self.balancedTree(arr[:mid])
+        return root
+        
+        
+    
+    def balanceBST(self, root: TreeNode) -> TreeNode:
+        self.inorder_ar = []
+        self.inorder(root)
+        print(self.inorder_ar)
+        root = self.balancedTree(self.inorder_ar)
+        return root
+        
+        
+        
