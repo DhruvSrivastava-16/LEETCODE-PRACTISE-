@@ -7,14 +7,16 @@ class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         answer = 0
         dict_sum = defaultdict(int)
-        temp_sum = 0
-        dict_sum[temp_sum] +=1
+        r_sum = 0
+        dict_sum[r_sum] = 1
         for j in nums:
             
-            temp_sum+=j
-            answer+=dict_sum[temp_sum-k]
-            dict_sum[temp_sum]+=1
-            
+            r_sum+=j
+            answer+=dict_sum[r_sum-k]
+            dict_sum[r_sum]+=1
+
         return answer
+            
+        
             
             
