@@ -31,18 +31,15 @@ class Solution:
                 
                 if grid[i][j] == '1':
                     count+=1
-                    grid[i][j] = 0
-                    #print('-> ',i,j)
+                
                     q.append((i,j))
                     
                     while len(q)>0:
-                        #print('-----',q)
                         temp = q.popleft()
                         
                         for k in range(0,4):
                             tempx = temp[0]+dirx[k]
                             tempy = temp[1]+diry[k]
-                            #print(tempx,tempy)
                             
                             if(self.isValid(tempx,tempy,grid)):
                                 #print("in:")
@@ -51,4 +48,3 @@ class Solution:
         
         print("Grid",grid)
         return count
-                        
