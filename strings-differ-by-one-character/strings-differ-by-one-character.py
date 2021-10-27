@@ -2,18 +2,15 @@ class Solution:
     def differByOne(self, dict: List[str]) -> bool:
         dict1 = {}
         m = len(dict[0])
+        seen = set()
     
-        for i in dict:
-            for j in range(0,m):
-                temp = i[:j]+'*'+i[j+1:]
-                
-                if temp not in dict1:
-                    dict1[temp]=1
-                
-                elif temp in dict1:
-                    dict1[temp]+=1
-                
-                if dict1[temp] == 2:
+        for word in dict:
+            for i in range(0,len(word)):
+                temp = word[:i]+'.'+word[i+1:]
+                if temp in seen:
                     return True
                 
+                seen.add(temp)
+                
         return False
+                
