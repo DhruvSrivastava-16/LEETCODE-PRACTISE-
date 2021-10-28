@@ -1,19 +1,24 @@
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
         
-        currentSum = 0
-        d = dict()
-        for i, s in enumerate([0] + nums):
-            currentSum += s
-            modk = currentSum % k
-            if modk in d: 
-                if i - d[modk] >= 2:
+        
+        r_sum = 0
+        h_map = {}
+        nums = [0] + nums
+        
+        for i in range(0,len(nums)):
+            
+            r_sum += nums[i]
+            r_mod = r_sum%k 
+            
+            if r_mod in h_map:
+                
+                if i-h_map[r_mod]>=2:
                     return True
+                
             else:
-                d[modk] = i
-            
+                
+                h_map[r_mod]  = i
+        
+        
         return False
-        
-            
-        
-        
