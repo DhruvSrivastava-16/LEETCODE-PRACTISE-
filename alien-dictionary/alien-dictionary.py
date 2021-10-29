@@ -15,7 +15,8 @@ class Solution:
                         
                     break
             else: # Check that second word isn't a prefix of first word.
-                if len(word2) < len(word1): return ""
+                if len(word2) < len(word1): 
+                    return ""
             ""
                     
         print(in_degree,adj_list)
