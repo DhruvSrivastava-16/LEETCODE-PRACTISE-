@@ -4,7 +4,22 @@ class Solution:
     def alienOrder(self, words: List[str]) -> str:
         
         adj_list = defaultdict(set)
-        in_degree = Counter({c : 0 for word in words for c in word})
+        in_degree = {c:0 for word in words for c in word}
+        
+        for w1, w2 in zip(words,words[1:]):
+            for c1, c2 in zip(w1,w2):
+                if c1!=c2:
+                    if c2 not in adj_list[c1]:
+                        adj_list[c1].add(c2)
+                        in_degree[c2]+=1
+        
+        
+        
+        
+        adj_list = defaultdict(set)
+        in_degree = {c : 0 for word in words for c in word}
+        
+        print(in_degree)
         
         for word1, word2 in zip(words,words[1:]):
             for c, d in zip(word1,word2):
