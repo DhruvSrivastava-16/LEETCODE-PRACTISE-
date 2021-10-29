@@ -1,28 +1,33 @@
+from collections import defaultdict
+
+diameter = 0
 class Solution:
-    def dfs(self,graph,visited,root):
-        visited.add(root)
-        d_1 = 0
-        d_2 = 0
+    def helper(self,graph,visited,root):
+        global diameter
         
-        temp_dist = 0
+        visited.add(root)
+        d1 = 0
+        d2 = 0
+        l = 0
         
         for n in graph[root]:
             if n not in visited:
-                temp_dist = 1 + self.dfs(graph,visited,n)
+                l = 1 + self.helper(graph,visited,n)
                 
-            if temp_dist>d_1:
-                d_1, d_2 = temp_dist, d_1
-         
+            if l>d1:
+                d1, d2 = l, d1
                 
-            elif temp_dist>d_2:
-                d_2 = temp_dist
+            elif l>d2:
+                d2 = l
                 
-        self.diameter = max(self.diameter,d_1+d_2)
-            
-        return d_1
+        diameter = max(diameter,d1+d2)
+        
+        return d1
+        
     
     def treeDiameter(self, edges: List[List[int]]) -> int:
         
+        global diameter
         graph = defaultdict(list)
         
         for e in edges:
@@ -31,6 +36,6 @@ class Solution:
             
         visited = set()
         
-        self.diameter = 0
-        self.dfs(graph,visited,0)
-        return self.diameter
+        diameter = 0
+        self.helper(graph,visited,0)
+        return diameter
