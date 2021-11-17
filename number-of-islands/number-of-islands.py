@@ -15,7 +15,6 @@ class Solution:
         if grid[x][y] == '0':
             return False
         
-        #print("grid[x][y]",grid[x][y])
         return True
     
     
@@ -31,7 +30,7 @@ class Solution:
                 
                 if grid[i][j] == '1':
                     count+=1
-                
+                    grid[i][j] = 0
                     q.append((i,j))
                     
                     while len(q)>0:
@@ -40,11 +39,11 @@ class Solution:
                         for k in range(0,4):
                             tempx = temp[0]+dirx[k]
                             tempy = temp[1]+diry[k]
-                            
+
                             if(self.isValid(tempx,tempy,grid)):
-                                #print("in:")
                                 q.append((tempx,tempy))
                                 grid[tempx][tempy] = '0'
         
         print("Grid",grid)
         return count
+                        
