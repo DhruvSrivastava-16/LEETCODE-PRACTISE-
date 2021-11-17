@@ -8,23 +8,25 @@ class Node:
 """
 
 class Solution:
-    def helper(self,head):
-        if head is None:
+    
+    def helper(self, head):
+        if not head:
             return None
         
         if head in self.visited:
             return self.visited[head]
         
-        node = Node(head.val,None,None)
         
-        self.visited[head] = node
+        Node_t = Node(head.val,None,None)
         
-        node.next = self.helper(head.next)
-        node.random = self.helper(head.random)
+        self.visited[head] = Node_t
+        Node_t.next = self.helper(head.next)
+        Node_t.random = self.helper(head.random)
         
-        return node
-            
+        return Node_t
+        
     
     def copyRandomList(self, head: 'Node') -> 'Node':
-        self.visited={}
+        
+        self.visited = {}
         return self.helper(head)
