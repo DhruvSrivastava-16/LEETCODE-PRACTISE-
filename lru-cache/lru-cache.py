@@ -26,14 +26,12 @@ class LRUCache:
         elif (len(self.hash)==self.capacity):
             items = list(self.hash.keys())
             self.hash.pop(items[0])
-            #print("Now:",self.hash)
             
             self.hash[key] = value
             
         else:
             self.hash[key] = value
             
-        #print(self.hash)
         
 
 
