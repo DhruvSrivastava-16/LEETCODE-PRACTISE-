@@ -1,23 +1,26 @@
 class Solution:
-    def gen_sub_len(self,nums,l,pos,temp):
-        if len(temp)==l:
-            self.ans.append(temp[:])
-            return 
+    def helper(self,nums,sz,temp,st):
+        if len(temp) == sz:
+            self.ss.append(temp[:])
+            return
             
-        for i in range(pos,len(nums)):
+        for i in range(st,len(nums)):
             temp.append(nums[i])
-            self.gen_sub_len(nums,l,i+1,temp)
+            self.helper(nums,sz,temp,i+1)
             temp.pop()
+
+            
+            
+        
+            
     
     
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        self.ans = []
-        
-        for l in range(0,len(nums)+1):
-            temp = []
-            self.gen_sub_len(nums,l,0,temp)
-
+        self.ss = []
+        temp = []
+        for sz in range(0,len(nums)+1):
+            self.helper(nums,sz,temp,0)
             
-        return self.ans
-    
-    
+        
+        return(self.ss)
+            
