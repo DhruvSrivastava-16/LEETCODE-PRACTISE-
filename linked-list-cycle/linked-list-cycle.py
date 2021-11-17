@@ -17,7 +17,6 @@ class Solution:
                 break
                 
             head = head.next
-        #print(visited)
             
         if cycle==1:
             return True
