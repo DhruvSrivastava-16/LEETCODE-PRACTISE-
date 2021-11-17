@@ -1,41 +1,20 @@
-from collections import Counter
-
+import heapq
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
-        a={}
-        for i in arr:
-            if i not in a:
-                a[i] = 1
-                
-            else:
-                a[i] = a[i] + 1
-                
+        freq_map = collections.Counter(arr)
+        heap = [[v,k] for k,v in freq_map.items()]
+        heapq.heapify(heap)
         
-        print(a)
-        b = []
-        for i in a.keys():
-            b.append([i,a[i]])
-        print(b)
-        b.sort(key = lambda a:a[1])
-        
-        for i in b:
-            if k==0:
-                break 
-                
-            if i[1]>=k:
-                i[1] = i[1]-k
-                k = 0
+        while k>0:
+            temp = heapq.heappop(heap)
+            if temp[0]>k:
+                heap.append(temp[0])
+                break
             
             else:
-                k = k-i[1]
-                i[1]=0
+                k = k - temp[0]
+                
+        return(len(heap))
+                
+                
         
-        ans = 0
-        
-        for i in b:
-            if i[1] == 0:
-                continue
-            
-            else:
-                ans +=1
-        return(ans)
