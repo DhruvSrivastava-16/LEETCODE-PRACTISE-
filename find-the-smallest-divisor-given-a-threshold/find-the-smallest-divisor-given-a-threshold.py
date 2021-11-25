@@ -11,14 +11,14 @@ class Solution:
         low = 1
         high = max(nums)+1
         
-        while low<high:
+        while low<=high:
             
             mid = (low+high)//2
             test = self.check(mid,nums)
             
             if test<=threshold:
                 ans = mid
-                high = mid
+                high = mid-1
                 
             else:
                 low = mid+1
