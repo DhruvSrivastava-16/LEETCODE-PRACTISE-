@@ -21,7 +21,6 @@ class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         if not grid: 
             return 
-        
         q = deque()
         count = 0
         
@@ -35,7 +34,7 @@ class Solution:
                     
                     while len(q)>0:
                         temp = q.popleft()
-                        
+                    
                         for k in range(0,4):
                             tempx = temp[0]+dirx[k]
                             tempy = temp[1]+diry[k]
