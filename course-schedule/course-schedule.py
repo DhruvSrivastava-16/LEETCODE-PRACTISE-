@@ -1,7 +1,7 @@
 class Solution:
     def isCyclic(self,visited,cc,stk):
         visited[cc] = True
-        stk.append(cc)
+        self.recstk[cc] = True
         
         for n in self.graph[cc]:
             
@@ -9,10 +9,10 @@ class Solution:
                 if self.isCyclic(visited,n,stk):
                     return True
             
-            elif n in stk:
+            elif self.recstk[n] == True:
                 return True
         
-        stk.pop()
+        self.recstk[cc] = False
         return False
         
         
@@ -20,6 +20,7 @@ class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         
         self.graph = {i:[] for i in range(0,numCourses)}
+        self.recstk = {i:False for i in range(0,numCourses)}
         for i in prerequisites:
             
             self.graph[i[1]].append(i[0])
