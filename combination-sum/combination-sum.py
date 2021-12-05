@@ -1,30 +1,20 @@
 class Solution:
-    ans = []
-    def helper(self,candidates,target,s,temp,start):
+    def helper(self,temp,target,candidates,st):
+        if sum(temp) == target:
+            self.answer.append(temp[:])
+            return 
+        
         if sum(temp)>target:
-            return
+            return 
         
-        elif sum(temp)==target:
-            t = tuple(temp)
+        for i in range(st,len(candidates)):
+            temp.append(candidates[i])
+            self.helper(temp,target,candidates,i)
+            temp.pop()
             
-            self.ans.append(temp[:])
-            
-        else:
-            for j in range(start,len(candidates)):
-                temp.append(candidates[j])
-                #print(temp)
-                self.helper(candidates,target,s,temp,j)
-                temp.pop()
-                
         
-                
-            
     
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        self.ans = []
-        s = set()
-      
-        self.helper(candidates,target,s,[],0)
-       
-        return(self.ans)
-        
+        self.answer = []
+        self.helper([],target,candidates,0)
+        return self.answer
