@@ -22,7 +22,7 @@ class Bucket:
     def remove(self, key):
         for i, kv in enumerate(self.bucket):
             if key == kv[0]:
-                del self.bucket[i]
+                self.bucket.pop(i)
 
 
 class MyHashMap(object):
