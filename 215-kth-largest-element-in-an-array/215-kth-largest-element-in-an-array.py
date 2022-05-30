@@ -5,6 +5,6 @@ class Solution:
         
         maxNums = [-num for num in nums]
         
-        heapq.heapify(maxNums)
+        # heapq.heapify(maxNums)
         
         return -heapq.nsmallest(k,maxNums)[-1]
