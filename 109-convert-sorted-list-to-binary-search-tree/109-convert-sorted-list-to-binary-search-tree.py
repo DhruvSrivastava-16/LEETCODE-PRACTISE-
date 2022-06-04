@@ -15,7 +15,6 @@ class Solution:
             return None
         
         mid = len(listt)//2
-        print(mid, listt)
         newNode = ListNode(listt[mid])
         
         newNode.left = self.recursion(listt[:mid])
