@@ -11,7 +11,6 @@ class Solution:
             h_map[trust[1]].append(trust[0])
             h_map_self[trust[0]].append(trust[1])
             
-        print(h_map)
         
         for k, v in h_map.items():
             
