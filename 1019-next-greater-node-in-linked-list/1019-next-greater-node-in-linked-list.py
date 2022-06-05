@@ -12,32 +12,22 @@ class Solution:
             
             value, loc = stk.pop()
             ans[loc] = val
-            
-            
-    
+
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
-        
         
         stk = []
         ans = defaultdict(int)
         idx = 0
-        nodes = 0
-        
-        
-        
+
         while head:
             if stk:
                 
                 if head.val > stk[-1][0]:
                     self.popping(stk, head.val, idx, ans)
-                
-            
 
             stk.append([head.val, idx])
                 
-                
             head = head.next
-            nodes+=1
             idx+=1
             
         final = []    
