@@ -14,12 +14,7 @@ class Solution:
                 self.backtracking(nums,temp,j,ans,vis)
                 temp.pop()
                 vis.remove(j)
-            
-            
-            
-            
-        return
-        
+                
         
         
     
