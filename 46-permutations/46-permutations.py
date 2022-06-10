@@ -24,7 +24,6 @@ class Solution:
             temp = []
             vis = set()
             temp.append(nums[i])
-            print(i,temp)
             self.backtracking(nums,temp,i,ans,vis)
             
         return ans
