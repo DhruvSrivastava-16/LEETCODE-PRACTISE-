@@ -1,6 +1,6 @@
 class Solution:
     def reverse(self, nums: list, start: int, end: int) -> None:
-        while start < end:
+        while start <= end:
             nums[start], nums[end] = nums[end], nums[start]
             start, end = start + 1, end - 1
                 
