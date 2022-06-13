@@ -2,7 +2,6 @@ class Solution:
     
     def backtrack(self, graph, path, paths, ne):
         path.append(ne)
-        print("Ne",ne,len(graph)-1)
 
         if ne == len(graph)-1:
             paths.append(path[:])
