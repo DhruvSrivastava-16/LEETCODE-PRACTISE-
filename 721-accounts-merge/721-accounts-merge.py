@@ -8,9 +8,6 @@ class Solution:
             if n not in visited:
                 self.dfs(graph, n, v, CC, visited)
         
-        
-        
-    
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         graph = defaultdict(set)
         nameMap = defaultdict(set)
