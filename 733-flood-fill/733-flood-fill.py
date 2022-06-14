@@ -3,7 +3,7 @@ class Solution:
     dy = [0,1,0,-1]
     
     def helper(self, sr, sc, image, newColor, nColor,visited):
-        if sr<0 or sr>=len(image) or sc<0 or sc>=len(image[0]) or (sr, sc) in visited:
+        if sr<0 or sr>=len(image) or sc<0 or sc>=len(image[0]) or image[sr][sc]==newColor:
             return 
         visited.add((sr,sc))
         if image[sr][sc]==nColor:
