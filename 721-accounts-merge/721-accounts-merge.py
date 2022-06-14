@@ -33,8 +33,7 @@ class Solution:
 
                 answer.append(CC[:])
                 
-        print(answer,visited)
-        
+
         final_answer = []
         temp = []
 
