@@ -5,17 +5,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def trav(self,left,right):
-        if not right and not left:
+    
+    def trav(self,t1,t2):
+        if not t1 and not t2:
             return True
-        if (left == None or right == None): 
-            return False
-    
-    
         
-        return  left.val==right.val and self.trav(left.left,right.right) and self.trav(left.right,right.left)
-            
-
+        if not t1 or not t2:
+            return False
+        
+        return t1.val==t2.val and self.trav(t1.left,t2.right) and self.trav(t1.right,t2.left)
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.trav(root,root)
-        
