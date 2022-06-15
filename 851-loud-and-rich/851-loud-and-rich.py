@@ -21,9 +21,7 @@ class Solution:
             richerThanX = []
             self.dfs(n,visited,richerThanX,graph)
             richMap[n] = richerThanX
-            print(richerThanX)
             
-        print(richMap)
         ans = []
         
         for k,v in richMap.items():
