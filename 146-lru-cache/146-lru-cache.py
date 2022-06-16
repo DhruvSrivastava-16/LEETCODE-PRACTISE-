@@ -7,7 +7,7 @@ class LRUCache:
     def get(self, key: int) -> int:
         if key in self.hmap:
             val = self.hmap.pop(key)
-            self.put(key,val)
+            self.hmap[key] = val
             
             return val
         
