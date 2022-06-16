@@ -13,18 +13,13 @@ class Solution:
             
             first = head
             second = head.next
+            prev.next = second 
             
-            
-            prev.next = second
             first.next = second.next
-            second.next = first 
+            second.next = first
             
             prev = first
             head = first.next
             
-            
         return main.next
-            
-            
-            
             
