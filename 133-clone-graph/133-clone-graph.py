@@ -5,7 +5,6 @@ class Node:
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
 """
-from collections import defaultdict
 
 class Solution:
     
@@ -15,11 +14,10 @@ class Solution:
         
         if node in visited:
             return visited[node]
-    
+        
         newNode = Node(node.val)
         visited[node] = newNode
         
-
         for n in node.neighbors:
             newNode.neighbors.append(self.dfs(n,visited))
             
@@ -28,4 +26,3 @@ class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         visited = dict()
         return self.dfs(node,visited)
-        
