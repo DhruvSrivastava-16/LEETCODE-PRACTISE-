@@ -5,40 +5,13 @@
 #         self.left = None
 #         self.right = None
 
-# class Solution:
-    
-#     def dfs(self,root,p,q):
-  
-#         node = root
-        
-#         qv = q.val
-#         pv = p.val
-        
-#         parv = node.val
-
-#         if parv > qv and parv > pv:
-#             node = node.right
-#             return self.dfs(node,p,q)
-        
-#         elif parv<qv and parv<pv:
-#             node = node.left
-#             return self.dfs(node,p,q)
-        
-#         else:
-#             return node
-    
-#     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        
-#         return self.dfs(root,p,q)
-    
 class Solution:
+    
     def dfs(self,root,p,q):
-        p_val = p.val
-
-        q_val = q.val
-
+        
         node = root
-
+        p_val = p.val
+        q_val = q.val
         parent_val = node.val
         
         if p_val > parent_val and q_val > parent_val:    
