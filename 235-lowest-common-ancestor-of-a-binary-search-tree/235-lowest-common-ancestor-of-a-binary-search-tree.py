@@ -13,13 +13,10 @@ class Solution:
         p_val = p.val
         q_val = q.val
         parent_val = node.val
-        print(node,p_val,q_val,parent_val)
         
         if p_val > parent_val and q_val > parent_val:    
-            # node = node.right
             return self.dfs(node.right,p,q)
         elif p_val < parent_val and q_val < parent_val:
-            # node = node.left
             return self.dfs(node.left,p,q)
         else:
             return node
