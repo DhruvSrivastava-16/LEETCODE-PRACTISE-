@@ -15,15 +15,12 @@ class Solution:
         parent_val = node.val
         
         if p_val > parent_val and q_val > parent_val:    
-            # If both p and q are greater than parent
             node = node.right
             return self.dfs(node,p,q)
         elif p_val < parent_val and q_val < parent_val:
-            # If both p and q are lesser than parent
             node = node.left
             return self.dfs(node,p,q)
         else:
-            # We have found the split point, i.e. the LCA node.
             return node
         
     def lowestCommonAncestor(self, root, p, q):
