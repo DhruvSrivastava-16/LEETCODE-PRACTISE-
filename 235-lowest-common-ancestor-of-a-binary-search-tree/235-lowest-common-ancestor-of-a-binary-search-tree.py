@@ -19,8 +19,8 @@ class Solution:
             # node = node.right
             return self.dfs(node.right,p,q)
         elif p_val < parent_val and q_val < parent_val:
-            node = node.left
-            return self.dfs(node,p,q)
+            # node = node.left
+            return self.dfs(node.left,p,q)
         else:
             return node
         
