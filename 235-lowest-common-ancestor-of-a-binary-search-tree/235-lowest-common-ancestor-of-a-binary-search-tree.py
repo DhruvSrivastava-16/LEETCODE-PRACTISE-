@@ -1,19 +1,46 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+# class Solution:
+    
+#     def dfs(self,root,p,q):
+  
+#         node = root
+        
+#         qv = q.val
+#         pv = p.val
+        
+#         parv = node.val
+
+#         if parv > qv and parv > pv:
+#             node = node.right
+#             return self.dfs(node,p,q)
+        
+#         elif parv<qv and parv<pv:
+#             node = node.left
+#             return self.dfs(node,p,q)
+        
+#         else:
+#             return node
+    
+#     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        
+#         return self.dfs(root,p,q)
+    
 class Solution:
     def dfs(self,root,p,q):
         p_val = p.val
 
-        # Value of q
         q_val = q.val
 
-        # Start from the root node of the tree
         node = root
 
-        # Traverse the tree
-  
-
-            # Value of current node or parent node.
         parent_val = node.val
-
+        
         if p_val > parent_val and q_val > parent_val:    
             # If both p and q are greater than parent
             node = node.right
@@ -22,7 +49,6 @@ class Solution:
             # If both p and q are lesser than parent
             node = node.left
             return self.dfs(node,p,q)
-
         else:
             # We have found the split point, i.e. the LCA node.
             return node
@@ -37,3 +63,4 @@ class Solution:
 
         # Value of p
         return self.dfs(root,p,q)
+        
