@@ -10,8 +10,8 @@ class Solution:
         itr = 0
         
         while r<len(s):
-            if s[r] in seen and seen[s[r]]>=l:
-                l = max(seen[s[r]],-5)+1
+            if s[r] in seen:
+                l = max(seen[s[r]]+1,l)
             
             ans = max(ans,r-l+1)
             seen[s[r]] = r
