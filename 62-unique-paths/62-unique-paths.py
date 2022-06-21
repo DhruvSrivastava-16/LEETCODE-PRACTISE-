@@ -6,7 +6,8 @@ class Solution:
             for row in range(1,m):
                 
                 d[row][col] = d[row-1][col] + d[row][col-1]
-                
-        return d[m-1][n-1]
+        
+        print(d)
+        return d[-1][n-1]
         
         
