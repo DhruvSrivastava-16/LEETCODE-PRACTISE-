@@ -1,5 +1,5 @@
 class Solution:
-    def backtracking(self, board, word, temp,x,y,visited):
+    def backtracking(self, board, temp, x,y,visited):
 
         
         if len(temp)==0:
@@ -14,16 +14,12 @@ class Solution:
         if (x,y) in visited:
             return False
         
-
-        
         visited.add((x,y))
         
-
-        
-        one = self.backtracking(board,word,temp[1:],x+1,y,visited)
-        two = self.backtracking(board,word,temp[1:],x,y+1,visited)
-        three = self.backtracking(board,word,temp[1:],x-1,y,visited)
-        four = self.backtracking(board,word,temp[1:],x,y-1,visited)
+        one = self.backtracking(board,temp[1:],x+1,y,visited)
+        two = self.backtracking(board,temp[1:],x,y+1,visited)
+        three = self.backtracking(board,temp[1:],x-1,y,visited)
+        four = self.backtracking(board,temp[1:],x,y-1,visited)
         
         visited.remove((x,y))
         
@@ -40,7 +36,7 @@ class Solution:
         for x in range(0,len(board)):
             for y in range(0,len(board[0])):
                 visited = set()
-                ans = self.backtracking(board, word, word,x,y,visited)
+                ans = self.backtracking(board, word,x,y,visited)
                 
                 if ans:
                     return ans
