@@ -9,15 +9,15 @@ class Solution:
         count = 0
         itr = 0
         
-        while l<=r and r<len(s):
+        while r<len(s):
             if s[r] in seen:
                 l = max(seen[s[r]],l)
             
             ans = max(ans,r-l+1)
             seen[s[r]] = r+1
             r+=1
-            
-            
+        
+        print(seen)    
         return ans 
             
             
