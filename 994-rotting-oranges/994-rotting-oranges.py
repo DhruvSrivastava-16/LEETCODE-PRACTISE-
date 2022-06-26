@@ -66,8 +66,6 @@ class Solution:
                     visited.add((txx,tyy))
                     ones-=1
 
-            
-                
                         
         if ones>0:
             return -1
