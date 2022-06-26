@@ -13,7 +13,7 @@ class Solution:
         dx = [-1,0,1,0]
         dy = [0,1,0,-1]
         dq = deque()
-        mins = 0
+        mins = -1
         ones = 0
         startLoc = None
         dq = deque()
@@ -41,18 +41,21 @@ class Solution:
                     
         visited = set()
         dq.append([-1,-1])
+
         
         while dq:
             tx, ty = dq.popleft()
             visited.add((tx,ty))
             
-            if not dq:
-                break
+            
                 
             if tx == -1:
+                
                 mins+=1
-                dq.append([-1,-1])
+                if dq:
+                    dq.append([-1,-1])
                 continue
+                
                     
             
             for itr in range(4):
@@ -66,7 +69,9 @@ class Solution:
                     visited.add((txx,tyy))
                     ones-=1
 
+                
                         
+        print(grid,mins,ones)
         if ones>0:
             return -1
         
