@@ -69,7 +69,6 @@ class Solution:
             
                 
                         
-        print(grid,mins,ones)
         if ones>0:
             return -1
         
