@@ -47,17 +47,14 @@ class Solution:
             tx, ty = dq.popleft()
             visited.add((tx,ty))
             
-            
-                
             if tx == -1:
                 
                 mins+=1
+                
                 if dq:
                     dq.append([-1,-1])
                 continue
-                
-                    
-            
+
             for itr in range(4):
 
                 txx = tx + dx[itr]
