@@ -16,14 +16,7 @@ class Solution:
             temp.pop()
             
     def hasAllCodes(self, s: str, k: int) -> bool:
-#         store = []
-#         temp = []
-#         self.genSub(k,store,temp,0,0)
-#         for itr in store:
-#             if itr not in s:
-#                 return False
-            
-#         return True
+
 
         need = 1<<k
         found = set()
