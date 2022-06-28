@@ -28,8 +28,9 @@ class Solution:
         need = 1<<k
         found = set()
         
-        for i in range(k,len(s)+1):
-            temp = s[i-k:i]
+        for i in range(0,len(s)-k+1):
+            print(i,i+k-1)
+            temp = s[i:i+k]
             if temp not in found:
                 found.add(temp)
                 need-=1
