@@ -21,11 +21,7 @@ class Solution:
                 
             else:
                 itr2+=1
-            
-            
-            
 
-            
         return answer
             
         
