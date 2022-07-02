@@ -21,6 +21,7 @@ class Solution:
             return strs[0]
         
         cp = self.lcp(strs[0],strs[1])
+        
         if len(strs)==2:
             return cp
         
