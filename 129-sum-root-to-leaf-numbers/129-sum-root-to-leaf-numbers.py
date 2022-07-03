@@ -26,7 +26,6 @@ class Solution:
         leafs, temp = [], []
         self.trav(leafs,temp,root)
         summ = 0
-        print(leafs)
         for nums in leafs:
             if nums:
                 number = int(''.join(nums))
