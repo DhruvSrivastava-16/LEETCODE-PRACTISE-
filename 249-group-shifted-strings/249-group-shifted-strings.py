@@ -5,7 +5,7 @@ class Solution:
             code = ''
             for itr in range(len(st)):
                 
-                code+=chr((ord(st[itr]) - ord(st[0])) % 26 + ord('a'))
+                code+=str((ord(st[itr]) - ord(st[0])) % 26 + ord('a'))
                 
             codeMap[code].append(st)
             
