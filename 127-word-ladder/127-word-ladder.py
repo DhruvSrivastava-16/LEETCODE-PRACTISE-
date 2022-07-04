@@ -29,6 +29,7 @@ class Solution:
                     
                     if wd == endWord:
                         return stp+1
+                    
                     if wd not in visited:
                         visited.add(wd)
                         dq.append([wd,stp+1])
