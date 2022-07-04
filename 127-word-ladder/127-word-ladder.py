@@ -5,33 +5,33 @@ class Solution:
         if not beginWord or not endWord or not wordList or endWord not in wordList:
             return 0
         
-        allCombo = defaultdict(list)
+        
+        allComb = defaultdict(list)
         
         for word in wordList:
             for j in range(len(word)):
+                allComb[word[:j]+"."+word[j+1:]].append(word)
                 
-                allCombo[word[:j]+'*'+word[j+1:]].append(word)
                 
-        
         dq = deque()
+        
         dq.append([beginWord,1])
         visited = set()
+        
         visited.add(beginWord)
         
         while dq:
             
             wrd, stp = dq.popleft()
             
-            for j in range(len(wrd)):
-                temp = wrd[:j]+'*'+wrd[j+1:]
-                
-                for wd in allCombo[temp]:
-                    
-                    if wd == endWord:
+            for i in range(len(wrd)):
+                temp = wrd[:i]+'.'+wrd[i+1:]
+                for w in allComb[temp]:
+                    if w == endWord:
                         return stp+1
                     
-                    if wd not in visited:
-                        visited.add(wd)
-                        dq.append([wd,stp+1])
-                        
+                    if w not in visited:
+                        visited.add(w)
+                        dq.append([w,stp+1])
         return 0
+                
