@@ -5,10 +5,10 @@ class Solution:
             code = ''
             for itr in range(len(st)):
                 
-                code+=str((ord(st[itr]) - ord(st[0])) % 26 + ord('a'))
+                code+=str((ord(st[itr]) - ord(st[0])) % 26 + 100)
                 
             codeMap[code].append(st)
-            
+        print(codeMap)
         return list(codeMap.values())
                 
             
