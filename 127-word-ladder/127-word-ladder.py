@@ -4,12 +4,13 @@ class Solution:
         
         if not beginWord or not endWord or not wordList or endWord not in wordList:
             return 0
-        
+         
+        sz = len(beginWord)
         
         allComb = defaultdict(list)
         
         for word in wordList:
-            for j in range(len(word)):
+            for j in range(sz):
                 allComb[word[:j]+"."+word[j+1:]].append(word)
                 
                 
@@ -24,7 +25,7 @@ class Solution:
             
             wrd, stp = dq.popleft()
             
-            for i in range(len(wrd)):
+            for i in range(sz):
                 temp = wrd[:i]+'.'+wrd[i+1:]
                 for w in allComb[temp]:
                     if w == endWord:
