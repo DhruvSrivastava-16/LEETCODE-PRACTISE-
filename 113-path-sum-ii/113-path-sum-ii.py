@@ -11,18 +11,18 @@ class Solution:
             return 
         
         if not root.left and not root.right:
-            if curSum+root.val==s:
+            if curSum==s:
                 answer.append(temp[:])
                 return 
                 
         if root.left:
             temp.append(root.left.val)
-            self.dfs(s,temp,answer,root.left,curSum+root.val)
+            self.dfs(s,temp,answer,root.left,curSum+root.left.val)
             temp.pop()
         
         if root.right:
             temp.append(root.right.val)
-            self.dfs(s,temp,answer,root.right,curSum+root.val)
+            self.dfs(s,temp,answer,root.right,curSum+root.right.val)
             temp.pop()
 
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
@@ -31,5 +31,5 @@ class Solution:
         if root is None:
             return []
         temp.append(root.val)
-        self.dfs(targetSum,temp,answer,root,0)
+        self.dfs(targetSum,temp,answer,root,root.val)
         return(answer)
