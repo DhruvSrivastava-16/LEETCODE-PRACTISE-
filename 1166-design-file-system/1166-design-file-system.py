@@ -5,7 +5,6 @@ class FileSystem:
 
     def createPath(self, path: str, value: int) -> bool:
         temp = path.split('/')
-        print("P:",temp)
         if len(temp)==2 and path not in self.map:
             self.map[path] = value
             return True
