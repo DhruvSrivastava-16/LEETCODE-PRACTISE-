@@ -13,8 +13,10 @@ class Solution:
         dq.append((root,level))
         
         while dq:
+            
             node, l = dq.popleft()
             lmap[l].append(node.val)
+            
             if node.left:
                 dq.append((node.left,l+1))
             
@@ -24,7 +26,6 @@ class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         lmap = defaultdict(list)
         self.bfs(lmap,root,1)
-        print(lmap)
         
         maxx = -float('inf')
         ans = None
