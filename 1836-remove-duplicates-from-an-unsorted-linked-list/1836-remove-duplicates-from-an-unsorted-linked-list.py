@@ -27,6 +27,7 @@ class Solution:
         prev = None
         
         while temp:
+            
             if temp.val in delete:
                 if prev:
                     prev.next = temp.next
