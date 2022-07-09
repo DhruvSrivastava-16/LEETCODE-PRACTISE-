@@ -1,7 +1,6 @@
-import heapq
-
 class Solution:
     def subArrayRanges(self, nums: List[int]) -> int:
+
         sub = []
         minHeap = []
         maxHeap = []
@@ -21,6 +20,4 @@ class Solution:
                 
                 ans += -maxHeap[0]-minHeap[0]
                 
-                
-                
-        return(ans)
+        return ans
