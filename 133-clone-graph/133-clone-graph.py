@@ -9,17 +9,19 @@ class Node:
 class Solution:
     
     def dfs(self,node,visited):
+        
         if not node:
             return node
         
         if node in visited:
             return visited[node]
         
-        newNode = Node(node.val)
+        newNode = Node(node.val,[])
         visited[node] = newNode
         
         for n in node.neighbors:
-            newNode.neighbors.append(self.dfs(n,visited))
+            tempN = self.dfs(n,visited)
+            newNode.neighbors.append(tempN)
             
         return newNode
     
