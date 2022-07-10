@@ -3,9 +3,8 @@ class Solution:
         runningSum = 0
         answer = []
         
-        for i in range(len(nums)):
-            runningSum+=nums[i]
-            answer.append(runningSum)
+        for i in range(1,len(nums)):
+            nums[i]+=nums[i-1]
             
-        return answer
+        return nums
             
