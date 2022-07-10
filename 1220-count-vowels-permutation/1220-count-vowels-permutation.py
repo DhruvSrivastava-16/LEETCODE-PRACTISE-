@@ -7,7 +7,6 @@ class Solution:
         o_vowel_permutation_count = [1] * n
         u_vowel_permutation_count = [1] * n
 
-        MOD = 10 ** 9 + 7
 
         for i in range(1, n):
             a_vowel_permutation_count[i] = (e_vowel_permutation_count[i - 1] + i_vowel_permutation_count[i - 1] + u_vowel_permutation_count[i - 1]) 
