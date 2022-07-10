@@ -14,7 +14,6 @@ class Solution:
             iCount[i] = iCount[i-1] + oCount[i-1] + uCount[i-1]
             oCount[i] = oCount[i-1] + uCount[i-1]
             
-        print(aCount,eCount,iCount,oCount,uCount)
             
         result = aCount[-1] + eCount[-1] + iCount[-1] + oCount[-1] + uCount[-1] 
         
