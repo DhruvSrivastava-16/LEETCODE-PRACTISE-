@@ -2,20 +2,21 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         left = 0
         right = len(height)-1
+        maxL = height[left]
+        maxR = height[right]
         
-        maxL = height[0]
-        maxR = height[-1]
-        
-        totalStorage = 0
+        itr = 0
+        answer = 0
         
         while left<right:
             
-            if maxL < maxR:
+            if maxL<maxR:
+                
                 
                 temp = maxL-height[left]
                 
                 if temp>0:
-                    totalStorage += temp
+                    answer+=temp
                     
                 left+=1
                 
@@ -23,13 +24,18 @@ class Solution:
                 
             else:
                 
+    
                 temp = maxR-height[right]
-
+                
                 if temp>0:
-                    totalStorage += temp
+                    answer+=temp
                     
                 right-=1
                 
                 maxR = max(maxR,height[right])
                 
-        return totalStorage
+            
+        return answer
+            
+            
+            
