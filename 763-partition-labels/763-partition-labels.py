@@ -1,41 +1,39 @@
-from collections import defaultdict
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         
-        hmap = dict()
+        locMap = dict()
+        
         for i in range(len(s)):
-            if s[i] not in hmap:
-                hmap[s[i]] = [i,i]
+            if s[i] not in locMap:
+                locMap[s[i]] = [i,i]
                 
             else:
-                hmap[s[i]][1] = i
-         
-        partitions = []
+                locMap[s[i]][1] = i
+                
+                
         itr = 0
-        part = 0
+        itr2 = 0 
+        answer = []
         
         
         while itr<len(s):
             
-            st = hmap[s[itr]][0]
-            end = hmap[s[itr]][1]
+            st = locMap[s[itr]][0]
+            end = locMap[s[itr]][1]
+            
             itr2 = st
             
-            while itr2<end:
+            while itr2 < end:
                 
-                if hmap[s[itr2]][1]>end:
-                    end = hmap[s[itr2]][1]
+                if locMap[s[itr2]][1]>end:
+                    end = locMap[s[itr2]][1]
                     
-                itr2+=1
+                itr2 += 1
                 
-            partitions.append(end-st+1)
-            itr = itr2 + 1
+            answer.append(end-st+1)
             
-        return(partitions)
-                    
+            itr=itr2+1
             
-            
-        
-        
-        
-        
+        return answer
+                
+                
