@@ -1,44 +1,45 @@
 class Solution:
-    def backtracking(self, board, temp, x,y,visited):
-
+    
+    def bt(self,i,j,temp2,temp,board,visited):
         
         if len(temp)==0:
             return True
         
-        if x<0 or y<0 or x>=len(board) or y>=len(board[0]):
+        if i<0 or j<0 or i>=len(board) or j>=len(board[0]):
             return False
         
-        if board[x][y]!=temp[0]:
+        if (i,j) in visited:
             return False
         
-        if (x,y) in visited:
+        if temp[0]!=board[i][j]:
             return False
         
-        visited.add((x,y))
+        visited.add((i,j))
         
-        one = self.backtracking(board,temp[1:],x+1,y,visited)
-        two = self.backtracking(board,temp[1:],x,y+1,visited)
-        three = self.backtracking(board,temp[1:],x-1,y,visited)
-        four = self.backtracking(board,temp[1:],x,y-1,visited)
+        left = self.bt(i,j-1,temp[1:],temp[1:],board,visited)
+        right = self.bt(i,j+1,temp[1:],temp[1:],board,visited)
+        down = self.bt(i-1,j,temp[1:],temp[1:],board,visited)
+        up = self.bt(i+1,j,temp[1:],temp[1:],board,visited)
         
-        visited.remove((x,y))
+        visited.remove((i,j))
         
-        
-        return one or two or three or four
-        
+        return left or right or down or up
         
     
     def exist(self, board: List[List[str]], word: str) -> bool:
+        temp = []
         visited = set()
-        x, y = 0, 0
-        temp = ''
         
-        for x in range(0,len(board)):
-            for y in range(0,len(board[0])):
+        for i in range(0,len(board)):
+            for j in range(0,len(board[0])):
+                temp = ''
                 visited = set()
-                ans = self.backtracking(board, word,x,y,visited)
+                rq = self.bt(i,j,temp,word,board,visited)
                 
-                if ans:
-                    return ans
+                if rq:
+                    return True
                 
         return False
+        
+        
+        
