@@ -1,28 +1,24 @@
-from collections import deque
-
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         
         dq = deque()
+        word_set = set(wordDict)
         dq.append(0)
-        wordSet = set(wordDict)
         visited = set()
+        visited.add(0)
         
         while dq:
             
             st = dq.popleft()
-            if st in visited:
-                continue
-                
-            for end in range(st+1,len(s)+1):
-                if s[st:end] in wordSet:
-                    dq.append(end)
-                    if end == len(s):
+            
+            for i in range(st+1,len(s)+1):
+                if s[st:i] in word_set:
+                    if i not in visited:
+                        visited.add(i)
+                        dq.append(i)
+                        
+                    if i == len(s):
                         return True
                     
-            visited.add(st)
-                    
         return False
-            
-            
             
