@@ -1,38 +1,38 @@
 from collections import defaultdict, deque
+
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         
-        if not beginWord or not endWord or not wordList or endWord not in wordList:
-            return 0
-         
-        sz = len(beginWord)
-        
-        allComb = defaultdict(list)
+        hmap = defaultdict(list)
         
         for word in wordList:
-            for j in range(sz):
-                allComb[word[:j]+"."+word[j+1:]].append(word)
-                
+            for i in range(len(word)):
+                temp = word[:i] + "*" + word[i+1:]
+                hmap[temp].append(word)
                 
         dq = deque()
-        
-        dq.append([beginWord,1])
+        dq.append((beginWord,1))
         visited = set()
-        
         visited.add(beginWord)
+        step = 0
         
         while dq:
             
-            wrd, stp = dq.popleft()
+            word, step = dq.popleft()
             
-            for i in range(sz):
-                temp = wrd[:i]+'.'+wrd[i+1:]
-                for w in allComb[temp]:
-                    if w == endWord:
-                        return stp+1
-                    
-                    if w not in visited:
-                        visited.add(w)
-                        dq.append([w,stp+1])
-        return 0
+            
+            for i in range(len(beginWord)):
+                temp = word[:i]+'*'+word[i+1:]
                 
+                for wrd in hmap[temp]:
+                    
+                    if wrd == endWord:
+                        return step+1
+                    
+                    if wrd not in visited:
+                        visited.add(wrd)
+                        dq.append((wrd,step+1))
+            
+        return 0
+            
+            
