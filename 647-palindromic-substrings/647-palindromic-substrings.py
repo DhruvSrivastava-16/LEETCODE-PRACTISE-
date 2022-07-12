@@ -1,7 +1,7 @@
 class Solution:
     def countSubstrings(self, s: str) -> int:
         
-        dp = [[False for i in range(len(s)+1)] for j in range(len(s)+1)]
+        dp = [[False for i in range(len(s))] for j in range(len(s))]
         ans = 0
         
         for i in range(len(s)):
@@ -9,7 +9,6 @@ class Solution:
             
         for i in range(len(s)-1):
             dp[i][i+1] = s[i]==s[i+1]
-
             
         for length in range(3,len(s)+1):
             st = 0
