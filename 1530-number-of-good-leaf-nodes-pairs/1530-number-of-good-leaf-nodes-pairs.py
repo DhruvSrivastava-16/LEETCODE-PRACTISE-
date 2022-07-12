@@ -57,6 +57,5 @@ class Solution:
             visited = set()
             self.bfs(node,graph,leaves,answer,distance)
         
-        print(answer)
         return sum(answer)//2
         
