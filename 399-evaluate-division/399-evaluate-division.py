@@ -31,7 +31,6 @@ class Solution:
             var.add(equations[itr][1])
             
         answer = []
-        print(graph)
         
         for qr in queries:
             temp = 1
