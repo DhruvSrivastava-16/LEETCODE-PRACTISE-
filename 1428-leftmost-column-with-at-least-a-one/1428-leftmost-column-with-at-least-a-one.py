@@ -41,7 +41,6 @@ class Solution:
         answer = []
         
         while itr<r:
-            print(itr,pos)
             if itr==0:
                 pos = self.binSearch(itr,left,right,binaryMatrix)
                 
