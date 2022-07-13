@@ -39,13 +39,12 @@ class Solution:
         while dq:
             
             node, dist = dq.popleft()
+            
             if dist == k:
                 answer.append(node.val)
             
             for ne in graph[node]:
 
-
-                    
                 if ne not in visited:
                     dq.append((ne,dist+1))
                     visited.add(ne)
