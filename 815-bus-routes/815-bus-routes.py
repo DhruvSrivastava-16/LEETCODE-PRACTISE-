@@ -9,8 +9,6 @@ class Solution:
             for j in routes[i]:
                 StopBusMap[j].append(i)
         
-        print(StopBusMap)
-        
         graph = defaultdict(set)
         
         for k,v in StopBusMap.items():
@@ -22,11 +20,10 @@ class Solution:
                     if b!=i:
                         graph[b].add(i)
                 
-        print(graph)
         answer = float('inf')
         
         for node in StopBusMap[source]:
-            print('N:',node)
+            
             dq = deque()
             dist = 1
             visit = set()
