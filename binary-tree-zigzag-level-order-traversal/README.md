@@ -1,3 +1,4 @@
+[Discussion Post (created on 13/6/2022 at 15:5)](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/discuss/2278982/Python-77-Faster-Simple-DFS-and-Level-Store)  
 <h2>103. Binary Tree Zigzag Level Order Traversal</h2><h3>Medium</h3><hr><div><p>Given the <code>root</code> of a binary tree, return <em>the zigzag level order traversal of its nodes' values</em>. (i.e., from left to right, then right to left for the next level and alternate between).</p>
 
 <p>&nbsp;</p>
