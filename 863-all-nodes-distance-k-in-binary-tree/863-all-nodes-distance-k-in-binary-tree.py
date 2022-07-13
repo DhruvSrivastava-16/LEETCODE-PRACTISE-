@@ -42,6 +42,9 @@ class Solution:
             
             if dist == k:
                 answer.append(node.val)
+                
+            if dist>k:
+                return answer
             
             for ne in graph[node]:
 
