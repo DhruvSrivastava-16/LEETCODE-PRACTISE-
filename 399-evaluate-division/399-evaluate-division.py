@@ -15,8 +15,11 @@ class Solution:
         
         for keys in graph[nmr]:
             if keys not in visited:
-                self.dfs(keys,dnr,graph,answer,temp*graph[nmr][keys],visited)
-            
+                temp = temp*graph[nmr][keys]
+                self.dfs(keys,dnr,graph,answer,temp,visited)
+                temp = temp/graph[nmr][keys]
+        
+        visited.remove(nmr)
         
     
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
@@ -44,9 +47,8 @@ class Solution:
                 continue
                 
             prev = len(answer)
+            
             self.dfs(qr[0],qr[1],graph,answer,temp,visited)
-            
-            
             
             if prev==len(answer):
                 answer.append(-1)
