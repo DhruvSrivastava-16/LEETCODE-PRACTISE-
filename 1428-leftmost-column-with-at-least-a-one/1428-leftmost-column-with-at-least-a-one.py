@@ -54,12 +54,11 @@ class Solution:
             
             if pos>=0:
                 answer.append(pos)
-            print('Got:',pos)
             itr+=1
         
         if not answer:
             return -1
-        print(answer)
+        
         return min(answer)
                 
                 
