@@ -2,11 +2,12 @@ class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
         
         totalSum = 0
+        
         for num in nums:
             totalSum+=num
             
         maxArrSum = totalSum-x
-        print('mx:',maxArrSum)
+        
         low = 0
         high = 0
         Ans = False
@@ -22,11 +23,7 @@ class Solution:
                 
             if currSum == maxArrSum:
                 Ans = True
-                print(low,high,'found')
                 sz = max(high-low+1,sz)
-            print('curr',currSum)
-                
-            
 
             high+=1
                 
