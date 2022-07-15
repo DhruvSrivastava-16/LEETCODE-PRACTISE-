@@ -4,7 +4,6 @@ class Solution:
         lower = 0
         higher = 0
         
-        store = None
         curr = 0
         answer = 0
         Flag = False
