@@ -14,6 +14,7 @@ class Solution:
             
             if nums[higher]==0:
                 zr+=1
+                
                 while zr==2:
                     if nums[lower]==0:
                         zr-=1
@@ -21,9 +22,9 @@ class Solution:
 
                     
             higher+=1
+            
             answer = max(answer,higher-lower)
             
-        print(len(nums))
         return(answer)
                 
                 
