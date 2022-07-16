@@ -8,7 +8,6 @@ class Solution:
             return False
         
         if start == destination:
-            print(start,destination)
             return True
         
         if (start[0],start[1]) in visited:
@@ -24,33 +23,28 @@ class Solution:
         down = tx+1
         up = tx-1
 
-            
         while tx>=0 and left>=0 and tx<len(maze) and maze[tx][left]!=1:
             left-=1
                 
         if self.dfs(maze,[tx,left+1],destination,visited):
-            print("G:",[tx,left+1])
             return True
         
         while tx>=0 and right>=0 and tx<len(maze) and right<len(maze[0]) and maze[tx][right]!=1:
             right+=1
                 
         if self.dfs(maze,[tx,right-1],destination,visited):
-            print("G:",[tx,right-1])
             return True
         
         while up>=0 and ty>=0 and up<len(maze) and ty<len(maze[0]) and maze[up][ty]!=1:
             up-=1
                 
         if self.dfs(maze,[up+1,ty],destination,visited):
-            print("G:",[up+1,ty])
             return True
 
         while down>=0 and ty>=0 and down<len(maze) and ty<len(maze[0]) and maze[down][ty]!=1:
             down+=1
                 
         if self.dfs(maze,[down-1,ty],destination,visited):
-            print("G:",[down-1,ty])
             return True
 
                 
