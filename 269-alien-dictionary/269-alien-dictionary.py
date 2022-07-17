@@ -19,20 +19,11 @@ class Solution:
         graph = defaultdict(list)
         nodes = set()
         
-#         for word in words:
-            
-#             for i in range(0,len(word)-1):
-                
-#                 if word[i]==word[i+1]:
-#                     continue
-                    
-#                 graph[word[i]].add(word[i+1])
-#                 nodes.add(word[i])
-#                 nodes.add(word[i+1])
-        # nodes = {c : [] for word in words for c in word}
+
         for word in words:
             for c in word:
                 nodes.add(c)
+                
         for first_word, second_word in zip(words, words[1:]):
         
             for c, d in zip(first_word, second_word):
@@ -57,9 +48,7 @@ class Solution:
             if self.cycle:
                 print('cycle')
                 return ""
-        print('AG:',graph)    
-        print(graph,stk,nodes)
-
+     
         return (''.join(stk[::-1]))
 
     # def alienOrder(self, words: List[str]) -> str:
