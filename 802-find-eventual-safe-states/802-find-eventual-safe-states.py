@@ -34,7 +34,6 @@ class Solution:
         self.globalVisited = set()
         
         for n in range(nodes):
-
             if not self.dfs(graph,n,visited):
                     answer.append(n)
 
