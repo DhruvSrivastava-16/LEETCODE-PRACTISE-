@@ -27,8 +27,10 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
         nodes = len(graph)
+        
         global visited
         visited = set()
+        
         self.stk = defaultdict(retFalse)
         self.cycle = False
         answer = []
@@ -41,6 +43,4 @@ class Solution:
             
                 
         return answer
-            
-            
-            
+
