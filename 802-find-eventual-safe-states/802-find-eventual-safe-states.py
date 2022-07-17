@@ -4,7 +4,7 @@ def retFalse():
 class Solution:
 
     
-    def dfs(self,graph,node,visited):
+    def dfs(self,graph,node):
         
         visited.add(node)
         self.stk[node]=True
@@ -13,7 +13,7 @@ class Solution:
         for ne in graph[node]:
             
             if ne not in visited:
-                if self.dfs(graph,ne,visited):
+                if self.dfs(graph,ne):
                     return True
                 
             elif self.stk[ne]==True:
@@ -27,6 +27,7 @@ class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
         nodes = len(graph)
+        global visited
         visited = set()
         self.stk = defaultdict(retFalse)
         self.cycle = False
@@ -34,7 +35,7 @@ class Solution:
         self.globalVisited = set()
         
         for n in range(nodes):
-            if not self.dfs(graph,n,visited):
+            if not self.dfs(graph,n):
                     answer.append(n)
 
             
