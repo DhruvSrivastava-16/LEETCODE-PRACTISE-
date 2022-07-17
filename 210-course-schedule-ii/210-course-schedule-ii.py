@@ -19,7 +19,6 @@ class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         
         graph = defaultdict(list)
-        self.cycle = False
         for edge in prerequisites:
             
             graph[edge[1]].append(edge[0])
@@ -37,8 +36,7 @@ class Solution:
                 
         answer = top[::-1]
         
-        if self.cycle==True:
-            return []
+
         
 
         
