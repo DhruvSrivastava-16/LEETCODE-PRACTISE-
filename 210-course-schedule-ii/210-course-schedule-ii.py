@@ -5,13 +5,15 @@ class Solution:
         self.recStack[node] = True
         for ne in graph[node]:
             if ne not in visited:
-                self.dfs(ne,visited,graph,top)
+                if self.dfs(ne,visited,graph,top):
+                    return True
                 
             elif self.recStack[ne]:
-                self.cycle = True
+                return True
                 
         self.recStack[node] = False        
         top.append(node)
+        return False
         
     
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
@@ -29,7 +31,8 @@ class Solution:
         for i in range(numCourses):
             
             if i not in visited:
-                self.dfs(i,visited,graph,top)
+                if self.dfs(i,visited,graph,top):
+                    return []
                 
                 
         answer = top[::-1]
