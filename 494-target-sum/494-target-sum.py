@@ -15,7 +15,7 @@ class Solution:
             dp[i][0] = 1
             
         for i in range(1,len(nums)+1):
-            for j in range(temp+1):
+            for j in range(temp+1): #Important
                 
                 if nums[i-1]>j:
                     dp[i][j] = dp[i-1][j]
