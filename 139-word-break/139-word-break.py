@@ -13,6 +13,9 @@ class Solution:
             
             st = dq.popleft()
             
+            if st == len(s):
+                return True
+            
             for i in range(st+1,len(s)+1):
                 
                 if s[st:i] in wordS:
@@ -20,7 +23,7 @@ class Solution:
                         visited.add(i)
                         dq.append(i)
                     
-                    if i==len(s):
-                        return True
+                    # if i==len(s):
+                    #     return True
                     
         return False
