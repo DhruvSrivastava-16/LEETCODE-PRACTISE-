@@ -1,37 +1,42 @@
-from collections import deque,defaultdict
 class Solution:
-    def bfs(self,node,graph):
+    
+    def bfs(self,edges,storeMap,node,graph):
+        
         dq = deque()
         visited = set()
-        visited.add(node)
-        dist = 0
+        
         dq.append((node,0))
-        distMap = defaultdict(int)
+        visited.add(node)
+        
         while dq:
             
-            node, dist = dq.popleft()
-            distMap[node] = dist
+            node, dist = dq.pop()
+            storeMap[node]=dist
             
-            for n in graph[node]:
-                if n not in visited:
-                    dq.append((n,dist+1))
-                    visited.add(n)
+            for ne in graph[node]:
+                if ne not in visited:
+                    dq.append((ne,dist+1))
+                    visited.add(ne)
                     
-        return distMap
-    
+        return storeMap[node]
+        
     def treeDiameter(self, edges: List[List[int]]) -> int:
+        
         graph = defaultdict(list)
         for edge in edges:
             graph[edge[0]].append(edge[1])
             graph[edge[1]].append(edge[0])
             
-        distMap = self.bfs(0,graph)
-        distList = list(distMap.items())
-        distList.sort(key = lambda x:x[1])
-        node = distList[-1][0]
+        storeMap1 = defaultdict(int)
+        self.bfs(edges,storeMap1,0,graph)
+        print(storeMap1)
         
-        distMap2 = self.bfs(node,graph)
-        distMapList = list(distMap2.items())
-        distMapList.sort(key = lambda x:x[1])
-        return distMapList[-1][1]
+        distMap = list(storeMap1.items())
+        distMap.sort(key = lambda x:x[1])
+        print(distMap)
+        node2 = distMap[-1][0]
+        storeMap2 = defaultdict(int)
         
+        self.bfs(edges,storeMap2,node2,graph)
+        print(storeMap2)
+        return max(storeMap2.values())
