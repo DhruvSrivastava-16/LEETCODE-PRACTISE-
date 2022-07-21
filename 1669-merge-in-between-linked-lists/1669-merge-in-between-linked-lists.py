@@ -25,22 +25,15 @@ class Solution:
             count+=1
             
         right = itr
-        
-        print(right.val)
-        
+            
         left.next = list2
         
 
-            
-        
-        
         while list2.next:
             list2 = list2.next
             
-        # print(right.val)
         list2.next = right.next
         
-        print(list2.val,right.val)
         
         return list1
         
