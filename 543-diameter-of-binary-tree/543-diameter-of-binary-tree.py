@@ -9,14 +9,16 @@ class Solution:
     def trav(self,root):
         if not root:
             return 0
+        global dia
         
         l = self.trav(root.left)
         r = self.trav(root.right)
-        self.dia = max(self.dia,l+r)
+        dia = max(dia,l+r)
         
         return max(l,r)+1
     
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        self.dia = 0
+        global dia
+        dia = 0
         self.trav(root)
-        return self.dia
+        return dia
