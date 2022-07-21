@@ -6,19 +6,20 @@
 #         self.right = right
 class Solution:
     
-    def trav(self,root):
+    def diameter(self,root):
         if not root:
             return 0
         global dia
+        left = self.diameter(root.left)
+        right = self.diameter(root.right)
+        dia = max(dia,left+right)
         
-        l = self.trav(root.left)
-        r = self.trav(root.right)
-        dia = max(dia,l+r)
+        return 1+max(left,right)
         
-        return max(l,r)+1
     
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        
         global dia
         dia = 0
-        self.trav(root)
+        self.diameter(root)
         return dia
