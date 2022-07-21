@@ -5,16 +5,23 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def match(self,p,q):
+    
+    def check(self,p,q):
+        if not p and q:
+            return False
+        
+        if p and not q:
+            return False
+        
         if not p and not q:
             return True
-        
-        if not p or not q:
-            return False
         
         if p.val!=q.val:
             return False
         
-        return self.match(p.left,q.left) and self.match(p.right,q.right)
+        return self.check(p.left,q.left) and self.check(p.right,q.right)
+    
+    
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        return self.match(p,q)
+        
+        return self.check(p,q)
