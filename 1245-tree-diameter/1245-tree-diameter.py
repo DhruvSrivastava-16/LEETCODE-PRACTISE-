@@ -29,11 +29,9 @@ class Solution:
             
         storeMap1 = defaultdict(int)
         self.bfs(edges,storeMap1,0,graph)
-        print(storeMap1)
         
         distMap = list(storeMap1.items())
         distMap.sort(key = lambda x:x[1])
-        print(distMap)
         node2 = distMap[-1][0]
         storeMap2 = defaultdict(int)
         
