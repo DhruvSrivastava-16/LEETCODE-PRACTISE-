@@ -1,7 +1,7 @@
 class Solution:
     
     def bt(self,nums,temp,answer,numsC,keys):
-        # print(nums,temp,answer)
+        
         if len(temp)==len(nums):
             answer.append(temp[:])
             return 
