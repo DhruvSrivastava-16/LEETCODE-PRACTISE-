@@ -18,7 +18,6 @@ class Solution:
                 before.next = head
                 before = before.next
                 
-                
             else:
                 after.next = head
                 after = after.next
