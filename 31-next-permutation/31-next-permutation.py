@@ -42,9 +42,7 @@ class Solution:
                 curr = nums[i]
                 currPos = i
          
-        print(nums,curr)
         nums[currPos], nums[smallerPos] = nums[smallerPos], nums[currPos]
-        print(nums)
         
         self.revArr(nums,smallerPos+1,len(nums)-1)
         
