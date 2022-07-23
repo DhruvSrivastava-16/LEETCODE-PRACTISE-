@@ -11,44 +11,44 @@ class Trie:
         
 
     def insert(self, word: str) -> None:
-        
-        curr = self.root
+        current = self.root
         
         for char in word:
-            
-            if char not in curr.children:
-                curr.children[char] = TrieNode()
-            
-            curr = curr.children[char]
+            if char not in current.children:
+                current.children[char] = TrieNode()
                 
+            current = current.children[char]
                 
-        curr.isEnd = True
+        current.isEnd = True
+            
         
 
     def search(self, word: str) -> bool:
         
-        curr = self.root
+        current = self.root
         
         for char in word:
             
-            if char not in curr.children:
+            if char not in current.children:
                 return False
             
-            curr = curr.children[char]
+            else:
+                current = current.children[char]
+                
+        return current.isEnd
         
-        return curr.isEnd
 
     def startsWith(self, prefix: str) -> bool:
         
-        curr = self.root
+        current = self.root
         
         for char in prefix:
             
-            if char not in curr.children:
+            if char not in current.children:
                 return False
-
-            curr = curr.children[char]
-                
+            
+            else:
+                current = current.children[char]
                 
         return True
         
