@@ -1,81 +1,62 @@
 from collections import deque
+
 class Solution:
-    
-    def valid(self,grid,txx,tyy):
-        if txx<0 or txx>=len(grid) or tyy<0 or tyy>=len(grid[0]):
-            return False
-        
-        return True
-
-
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        visited = set()
+        
         dx = [-1,0,1,0]
         dy = [0,1,0,-1]
+        
         dq = deque()
-        mins = -1
-        ones = 0
-        startLoc = None
-        dq = deque()
-
+        countFresh = 0
+        visited = set()
         
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 
-                if grid[i][j]==2:
-                    dq.append([i,j])
-                
-                elif grid[i][j]==1:
-                    ones+=1
-        
+                if grid[i][j] == 2:
+                    dq.append([[i,j],0])
+                    visited.add((i,j))
+                    
+                if grid[i][j] == 1:
+                    countFresh += 1
+           
         if not dq:
             
-            if ones>0:
-                return -1
-            
-            else:
+            if countFresh==0:
                 return 0
-        
-        if ones==0:
-            return 0
-                    
-        visited = set()
-        dq.append([-1,-1])
-
-        
-        while dq:
-            tx, ty = dq.popleft()
-            visited.add((tx,ty))
             
-            if tx == -1:
-                
-                mins+=1
-                
-                if dq:
-                    dq.append([-1,-1])
-                continue
-
-            for itr in range(4):
-
-                txx = tx + dx[itr]
-                tyy = ty + dy[itr]
-
-                if self.valid(grid,txx,tyy) and grid[txx][tyy]==1 and (txx,tyy) not in visited:
-                    grid[txx][tyy]=2
-                    dq.append([txx,tyy])
-                    visited.add((txx,tyy))
-                    ones-=1
-
-                
-                        
-        print(grid,mins,ones)
-        if ones>0:
             return -1
         
-        return mins
-                        
-                        
-                        
+    
+                    
+        while dq:
+        
+            
+            loc, time = dq.popleft()
+            
+
+            
+            x = loc[0]
+            y = loc[1]
+                
+            
+            for i in range(4):
+            
+                tx = x + dx[i]
+                ty = y + dy[i]
+                
+                if tx>=0 and ty>=0 and tx<len(grid) and ty<len(grid[0]) and (tx,ty) not in visited and grid[tx][ty]==1:
                     
                     
+
+                    grid[tx][ty] = 2
+                    visited.add((tx,ty))
+                    dq.append([[tx,ty],time+1])
+                    countFresh-=1
                     
+        if countFresh == 0:
+            print(grid)
+            return time
+                    
+        print(grid)        
+        return -1
