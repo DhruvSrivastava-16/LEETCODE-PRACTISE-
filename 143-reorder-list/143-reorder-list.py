@@ -4,60 +4,54 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
-        """
-        Do not return anything, modify head in-place instead.
-        """
+    
+    def findMiddle(self,head):
         
-        #find the mid
+        if not head:
+            return 
+        
         slow = head
         fast = head
         
         while fast and fast.next:
-            
-            slow = slow.next
             fast = fast.next.next
+            slow = slow.next
+            
+        return slow
+    
+    
+    def reverseLinkedList(self,head):
         
-        
-        #reverse a linked list
         prev = None
+        itr = head
         
-        while slow:
+        while itr:
             
-            temp = slow.next
-            slow.next = prev
-            prev = slow
-            slow = temp
+            temp = itr.next
+            itr.next = prev
+            prev = itr
+            itr = temp 
             
+            
+        return (prev)
         
         
-        main = head
-
-        first, second = head, prev
+    def mergeLinkedList(self,head1,head2):
+        
+        first = head1
+        second = head2
         
         while second.next:
             first.next, first = second, first.next
             second.next, second = first, second.next
             
-        
-        return main
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+        return (head1)
+    
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        middle = self.findMiddle(head)
+        middle = self.reverseLinkedList(middle)
+
+        return self.mergeLinkedList(head,middle)
