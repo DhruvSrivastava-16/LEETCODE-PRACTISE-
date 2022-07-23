@@ -23,7 +23,4 @@ class Solution:
                         visited.add(i)
                         dq.append(i)
                     
-                    # if i==len(s):
-                    #     return True
-                    
         return False
