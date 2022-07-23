@@ -47,7 +47,6 @@ class Trie:
             
             if char not in curr.children:
                 return False
-            
 
             curr = curr.children[char]
                 
