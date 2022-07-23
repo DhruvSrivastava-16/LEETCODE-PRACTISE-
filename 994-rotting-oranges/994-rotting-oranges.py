@@ -46,8 +46,6 @@ class Solution:
                 ty = y + dy[i]
                 
                 if tx>=0 and ty>=0 and tx<len(grid) and ty<len(grid[0]) and (tx,ty) not in visited and grid[tx][ty]==1:
-                    
-                    
 
                     grid[tx][ty] = 2
                     visited.add((tx,ty))
@@ -55,8 +53,6 @@ class Solution:
                     countFresh-=1
                     
         if countFresh == 0:
-            print(grid)
             return time
                     
-        print(grid)        
         return -1
