@@ -18,7 +18,7 @@ class Trie:
             
             if char not in curr.children:
                 curr.children[char] = TrieNode()
-                
+            
             curr = curr.children[char]
                 
                 
@@ -35,7 +35,6 @@ class Trie:
                 return False
             
             curr = curr.children[char]
-                
         
         return curr.isEnd
 
