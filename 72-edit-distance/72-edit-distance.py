@@ -19,12 +19,13 @@ class Solution:
         for i in range(1,len(dp)):
             for j in range(1,len(dp[0])):
                 
-                left = dp[i][j-1]+1
-                down = dp[i-1][j]+1
+                left = dp[i][j-1]
+                down = dp[i-1][j]
                 leftDown = dp[i-1][j-1]
-                if word1[j-1]!=word2[i-1]:
-                    leftDown+=1
+                if word1[j-1]!=word2[i-1]:    
+                    dp[i][j] = 1+min(left,down, leftDown)
                     
-                dp[i][j] = min(left,down, leftDown)
+                else:
+                    dp[i][j]  = min(leftDown,1+min(left,down))
                 
         return dp[-1][-1]
