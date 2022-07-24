@@ -15,7 +15,7 @@ class Solution:
         
         dp=[[0 for i in range(10)] for j in range(n+1)]
         
-        for i in range(n):
+        for i in range(n+1):
             for j in range(10):
                 if i==0:
                     dp[i][j]=1
