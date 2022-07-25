@@ -6,28 +6,27 @@
 #         self.right = right
 class Solution:
     
-    def helper(self,node):
+    def helper(self,root):
+        if not root:
+            return None
         
-        if not node:
-            return 
+        elif root.left is None and root.right is None:
+            return root
         
-        if not node.left and not node.right:
-            return node
+        leftTail = self.helper(root.left)
+        rightTail = self.helper(root.right)
         
-        left = self.helper(node.left)
-        right = self.helper(node.right)
-        
-        if left:
-            left.right = node.right
-            node.right = node.left
-            node.left = None
+        if leftTail:
             
-        return right if right else left
-        
+            leftTail.right = root.right
+            root.right = root.left 
+            root.left = None
+            
+        return rightTail if rightTail else leftTail
+    
     def flatten(self, root: Optional[TreeNode]) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
         self.helper(root)
         return root
-        
