@@ -1,15 +1,19 @@
 class Solution:
-
     def maxProfit(self, prices: List[int]) -> int:
-        minP = float('inf')
-        maxP = 0
+        
+        currMin = float('inf')
+        currMax = -float('inf')
+        
+        answer = -float('inf')
         
         for i in range(0,len(prices)):
-            if minP > prices[i]:
-                minP = prices[i]
+            
+            if prices[i]<currMin:
+                currMin = prices[i]
                 
-            elif prices[i]-minP>maxP:
-                maxP = prices[i]-minP
+            elif prices[i]-currMin>answer:
+                answer = prices[i]-currMin
                 
+             
+        return max(answer,0)
                 
-        return maxP
