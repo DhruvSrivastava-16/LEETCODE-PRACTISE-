@@ -18,11 +18,14 @@ class Solution:
         for i in range(n+1):
             for j in range(10):
                 if i==0:
-                    dp[i][j]=1
+                    dp[i][j]=0
+                elif i==1:
+                    dp[i][j] = 1
                 else:
                     sm=0
                     for x in hash[j]:
                         sm+=dp[i-1][x]
                     dp[i][j]=sm
-        return sum(dp[n-1])%(10**9+7)
+                    
+        return sum(dp[n])%(10**9+7)
         
