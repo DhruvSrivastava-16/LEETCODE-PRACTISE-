@@ -1,6 +1,5 @@
 class Solution:
     def knightDialer(self, n: int) -> int:
-        
         hash={}
         hash[1]=[6,8]
         hash[2]=[7,9]
@@ -28,4 +27,3 @@ class Solution:
                     dp[i][j]=sm
                     
         return sum(dp[n])%(10**9+7)
-        
