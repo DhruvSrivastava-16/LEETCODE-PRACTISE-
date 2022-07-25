@@ -3,27 +3,18 @@ class Solution:
         return False
 
     
-    def isCyclicUtil(self, v, graph,visited, parent):
- 
-        # Mark the current node as visited
-        visited.add(v) 
- 
-        # Recur for all the vertices
-        # adjacent to this vertex
-        for i in graph[v]:
- 
-            # If the node is not
-            # visited then recurse on it
-            if i not in visited:
-                if(self.isCyclicUtil(i,graph ,visited, v)):
+    def DFS(self,node,graph,recStk,visited,Parent):
+        visited.add(node)
+        
+        for n in graph[node]:
+            if n not in visited:
+                if self.DFS(n,graph,recStk,visited,node):
                     return True
-            # If an adjacent vertex is
-            # visited and not parent
-            # of current vertex,
-            # then there is a cycle
-            elif parent != i:
+            
+            elif Parent!=n:
+                print(Parent,n,node)
                 return True
- 
+            
         return False
         
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
@@ -38,7 +29,7 @@ class Solution:
         
         visited = set()
         cycle = False
-        cycle = self.isCyclicUtil(0,graph,visited,None)
+        cycle = self.DFS(0,graph,recStk,visited,None)
         print(cycle,visited)
         if cycle:
             return False
