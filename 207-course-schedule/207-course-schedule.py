@@ -1,42 +1,37 @@
-from collections import defaultdict
-
 class Solution:
     
-    def Cyclic(self,n, graph, recStack, visited):
+    def Top(self,graph,visited,recStack,stk,node):
         
-        visited.add(n)
-        recStack[n] = True
+        visited.add(node)
+        recStack[node] = 1
         
-        for neighbour in graph[n]:
-            
-            if neighbour not in visited:
-                
-                if self.Cyclic(neighbour, graph, recStack, visited):
-                    return True
-                
-            elif recStack[neighbour] == True:
-                    return True
-        
-        recStack[n] = False
-        return False
-        
-                
-    def canFinish(self, numCourse: int, prerequisites: List[List[int]]) -> bool:
-        
-        graph = defaultdict(list)
-        recStack = {i : False for i in range(numCourse)}
-        
-        for pre in prerequisites:
-            
-            graph[pre[1]].append(pre[0])
-            
-        visited = set()
-        
-        
-        for n in range(numCourse):
+        for n in graph[node]:
             if n not in visited:
-                if self.Cyclic(n, graph, recStack, visited):
-                    return False
+                if self.Top(graph,visited,recStack,stk,n):
+                    return True
                 
-        return True
+            elif recStack[n]==1:
+                return True
+            
+        stk.append(node)
+        recStack[node]=0
+        return False
     
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = defaultdict(list)
+        
+        for preReq in prerequisites:
+            
+            graph[preReq[1]].append(preReq[0])
+            
+        stk = []
+        visited = set()
+        recStack = defaultdict(int)
+        
+        for i in range(0,numCourses):
+            if i not in visited:
+                if self.Top(graph,visited,recStack,stk,i):
+                    return False
+            
+            
+        return True
