@@ -35,9 +35,5 @@ class Solution:
                 
                 
         answer = top[::-1]
-        
 
-        
-
-        
         return answer
