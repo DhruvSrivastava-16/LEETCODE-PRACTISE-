@@ -10,7 +10,6 @@ class Solution:
                     return False
                 
             elif cMap[node]==cMap[n]:
-                print(node,n)
                 return False
             
         return True
@@ -29,7 +28,6 @@ class Solution:
             if nd not in cMap:
                 cMap[nd] = color
                 if not self.dfs(nd,cMap,None,graph,-color):
-                    print(cMap)
                     return False
-        print(cMap)        
+                
         return True
