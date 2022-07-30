@@ -22,9 +22,7 @@ class Solution:
                         dontKeep = key[0]
 
                      
-                    left = seen.pop(dontKeep)+1
-                    # left = seen[keep]
-                    
+                    left = seen.pop(dontKeep)+1                    
 
             seen[nums[right]]=right
                 
