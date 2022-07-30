@@ -7,12 +7,6 @@ class Solution:
         prefixSum =0
         total = 0
         
-        # for num in nums:
-        #     total += num
-            # prefixSum.append(total)
-            
-        
-        
         left = 0
         right = 0
         
