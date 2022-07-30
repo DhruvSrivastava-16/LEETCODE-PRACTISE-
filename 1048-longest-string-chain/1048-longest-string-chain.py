@@ -10,7 +10,6 @@ class Solution:
                 tempW = words[itr][:i]+words[itr][i+1:]
                 word = words[itr]
                 if word in dp and tempW in dp:
-                    # print(word,dp)
                     dp[word] = max(dp[word],1+dp[tempW])
                 
         return max(list([v for k,v in dp.items()]))
