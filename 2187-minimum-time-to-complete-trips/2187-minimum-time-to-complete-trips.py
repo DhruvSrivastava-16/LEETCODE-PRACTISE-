@@ -2,10 +2,8 @@ class Solution:
     
     def isPoss(self,mid,time,totalTrips):
         total = 0
-        # print('M:',mid,time)
         for i in range(len(time)):
             total += int(mid/time[i])
-        # print('T:',total)
         return total>=totalTrips
             
             
