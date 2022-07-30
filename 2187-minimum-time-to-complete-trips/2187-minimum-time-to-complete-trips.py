@@ -24,13 +24,13 @@ class Solution:
             
             mid = (left+right)//2
             if self.isPoss(mid,time,totalTrips):
-                ans.append(mid)
+                ans = (mid)
                 right = mid-1
                 
             else:
                 left = mid+1
                 
-        return min(ans)
+        return (ans)
                 
             
             
