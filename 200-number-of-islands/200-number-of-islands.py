@@ -1,60 +1,53 @@
-from collections import deque
-dx = [1,0,-1,0]
-dy = [0,1,0,-1]
-
 class Solution:
     
-    def isValid(self, row, col, mat):
+    def isValid(self,x,y,grid,visited):
         
-        if row<0 or col<0 or row>=len(mat) or col>=len(mat[0]):
+        if x<0 or y<0 or x>=len(grid) or y>=len(grid[0]):
             return False
         
-        if mat[row][col]=='0':
+        if (x,y) in visited:
+            return False
+        
+        
+        if grid[x][y] == '0':
             return False
         
         return True
     
     def numIslands(self, grid: List[List[str]]) -> int:
         
-        row = 0
-        col = 0
-        vis = [[False for i in range(len(grid[0]))] for j in range(len(grid))]
-        
+        visited = set()
         dq = deque()
+        count = 0
         
-        num = 0
+        dx = [1,0,-1,0]
+        dy = [0,1,0,-1]
         
         for i in range(0,len(grid)):
             for j in range(0,len(grid[0])):
                 
-                if grid[i][j] == '1':
+                if grid[i][j] == '1' and (i,j) not in visited:
+                    count+=1
                     dq.append([i,j])
-                    num+=1
+                    visited.add((i,j))
+                    
                 
+                # else:
+                    # continue 
                     
-        
-                    while dq:
-
-                        elx, ely = dq.popleft()
-
-                        for itr in range(4):
-
-                            eltx = elx + dx[itr]
-                            elty = ely + dy[itr]
-
-                            if self.isValid(eltx, elty, grid):
-
-                                dq.append([eltx, elty])
-                                # vis[eltx][elty] == True
-                                grid[eltx][elty] = '0'
+                while dq:
                     
+                    x,y = dq.popleft()
                     
-        return num
-            
-            
-            
-            
-        
-        
-        
-        
+                    for itr in range(4):
+                        
+                        tx = x+dx[itr]
+                        ty = y+dy[itr]
+                        
+                        if self.isValid(tx,ty,grid,visited):
+                            
+                            dq.append([tx,ty])
+                            visited.add((tx,ty))
+                            
+        return count
+                        
