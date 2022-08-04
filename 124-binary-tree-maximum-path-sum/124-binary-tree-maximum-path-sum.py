@@ -5,7 +5,7 @@ class Solution:
         :rtype: int
         """
         def max_gain(node):
-            nonlocal max_sum
+            global max_sum
             if not node:
                 return 0
 
@@ -23,6 +23,7 @@ class Solution:
             # return the max gain if continue the same path
             return node.val + max(left_gain, right_gain)
    
+        global max_sum
         max_sum = float('-inf')
         max_gain(root)
         return max_sum
