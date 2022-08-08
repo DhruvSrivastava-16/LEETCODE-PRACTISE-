@@ -63,6 +63,6 @@ class Solution:
         self.crushCandies(board)
 
         # apply gravity
-        board = self.applyGravity(board)
+        self.applyGravity(board)
             
         return self.candyCrush(board)
