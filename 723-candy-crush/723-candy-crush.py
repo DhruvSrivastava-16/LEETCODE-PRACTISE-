@@ -30,7 +30,6 @@ class Solution:
         for vals in self.candyToCrush:
             board[vals[0]][vals[1]] = 0
             
-        return board
 
     def applyGravity(self, board):
         """ Drop the candies """
