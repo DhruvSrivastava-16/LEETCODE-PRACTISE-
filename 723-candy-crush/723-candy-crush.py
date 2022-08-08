@@ -42,7 +42,7 @@ class Solution:
                     board[bottom][j], board[top][j] = board[top][j], board[bottom][j]
                     bottom-=1
                 top-=1
-        return board
+        # return board
     
     def candyCrush(self, board: List[List[int]]) -> List[List[int]]:
         self.m = len(board)
