@@ -20,7 +20,6 @@ class Solution:
         answer = []
         
         for itr in range(len(nums)):
-            print(nums[itr])
             if nums[itr]!=0:
                 if countZero!=0:
                     answer.append(0)
