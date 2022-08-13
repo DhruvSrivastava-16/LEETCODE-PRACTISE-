@@ -1,29 +1,40 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prod = 1
-        zprod = 1
-        cz = 0
-        for i in range(len(nums)):
-            if nums[i]!=0:
-                prod *= nums[i]
+        
+        prefixProd = 1
+        countZero = 0
+        
+        for itr in range(len(nums)):
             
-            if nums[i]==0:
-                cz+=1
+            if nums[itr]!=0:
+                prefixProd*=nums[itr]
                 
-        if cz>1:
-            return [0 for n in nums]
-            
-        print(prod)
-        for n in range(len(nums)):
-            
-            if cz == 1:
-                if nums[n]==0:
-                    nums[n] = prod
-
-                else:
-                    nums[n] = 0
-            
             else:
-                nums[n] = prod//nums[n]
-            
-        return nums
+                countZero +=1 
+                
+        if countZero > 1:
+            return [0 for itr in range(len(nums))]
+
+        
+        
+        answer = []
+        
+        for itr in range(len(nums)):
+            print(nums[itr])
+            if nums[itr]!=0:
+                if countZero!=0:
+                    answer.append(0)
+                    
+                else:
+                    answer.append(prefixProd//nums[itr])
+                
+            else:
+                if countZero!=1:
+                    print('CZ:',countZero)
+                    answer.append(0)
+                    
+                else:
+                    answer.append(prefixProd)
+                
+                
+        return answer
