@@ -10,6 +10,7 @@ class Solution:
         if not root:
             return 0
         global dia
+        
         left = self.diameter(root.left)
         right = self.diameter(root.right)
         dia = max(dia,left+right)
