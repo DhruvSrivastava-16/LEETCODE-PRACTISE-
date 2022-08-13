@@ -7,60 +7,31 @@
 
 class Solution:
     
-    def dfs(self,root,p,q):
-  
-        node = root 
-        parv = node.val
+    def dfs(self,root,parents,parent):
         
-        qv = q.val
-        pv = p.val
+        if not root:
+            return 
         
-        if parv > qv and parv > pv:
-            return self.dfs(node.left,p,q)
+        parents[root] = parent
         
-        elif parv<qv and parv<pv:
-            return self.dfs(node.right,p,q)
+        self.dfs(root.left,parents,root)
+        self.dfs(root.right,parents,root)
         
-        else:
-            return root
-    
+        
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        parents  = {}
+        parent = None
+        self.dfs(root,parents,parent)
         
-        return self.dfs(root,p,q)
-    
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-# class Solution:
-    
-#     def dfs(self,root,p,q):
+        ancestorsP = set()
         
-#         node = root
-#         p_val = p.val
-#         q_val = q.val
-#         parent_val = node.val
-        
-#         if p_val > parent_val and q_val > parent_val:    
-#             return self.dfs(node.right,p,q)
-#         elif p_val < parent_val and q_val < parent_val:
-#             return self.dfs(node.left,p,q)
-#         else:
-#             return node
-        
-#     def lowestCommonAncestor(self, root, p, q):
-#         """
-#         :type root: TreeNode
-#         :type p: TreeNode
-#         :type q: TreeNode
-#         :rtype: TreeNode
-#         """
-
-#         # Value of p
-#         return self.dfs(root,p,q)
-        
-
-        
+        while p:
+            ancestorsP.add(p)
+            p = parents[p]
+            
+        while q:
+            
+            if q in ancestorsP:
+                return q
+            
+            q = parents[q]
