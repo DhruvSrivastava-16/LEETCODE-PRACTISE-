@@ -1,22 +1,21 @@
 class Solution:
     
-    def helper(self,nums,temp,store,sz,pos):
-        if sz==0:
-            store.append(temp[:])
+    def bt(self,sz,ans,temp,pos,nums):
+        if len(temp)==sz:
+            ans.append(temp[:])
             return 
         
-        for i in range(pos,len(nums)):
-            temp.append(nums[i])
-            self.helper(nums,temp,store,sz-1,i+1)
+        for itr in range(pos,len(nums)):
+            temp.append(nums[itr])
+            self.bt(sz,ans,temp,itr+1,nums)
             temp.pop()
-        
-    
+            
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
         temp = []
-        store = []
-        
+        ans = []
         for sz in range(0,len(nums)+1):
-            self.helper(nums,temp,store,sz,0)
+            temp = []
+            self.bt(sz,ans,temp,0,nums)
             
-        return (store)
+        return(ans)
