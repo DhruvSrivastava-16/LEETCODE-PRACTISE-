@@ -1,5 +1,6 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        
         if s=="":
             return 0
         
@@ -11,12 +12,11 @@ class Solution:
         while r<len(s):
             
             if s[r] in seen:
-                l = max(seen[s[r]],l)
+                
+                l = max(l,seen[s[r]])
                 
             ans = max(ans,r-l+1)
-            seen[s[r]]=r+1
+            seen[s[r]] = r+1
             r+=1
             
         return ans
-                
-            
