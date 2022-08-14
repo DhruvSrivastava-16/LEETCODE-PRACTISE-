@@ -1,6 +1,6 @@
 class Solution:
     
-    def bt(self,i,j,temp2,temp,board,visited):
+    def bt(self,i,j,temp,board,visited):
         
         if len(temp)==0:
             return True
@@ -16,10 +16,10 @@ class Solution:
         
         visited.add((i,j))
         
-        left = self.bt(i,j-1,temp[1:],temp[1:],board,visited)
-        right = self.bt(i,j+1,temp[1:],temp[1:],board,visited)
-        down = self.bt(i-1,j,temp[1:],temp[1:],board,visited)
-        up = self.bt(i+1,j,temp[1:],temp[1:],board,visited)
+        left = self.bt(i,j-1,temp[1:],board,visited)
+        right = self.bt(i,j+1,temp[1:],board,visited)
+        down = self.bt(i-1,j,temp[1:],board,visited)
+        up = self.bt(i+1,j,temp[1:],board,visited)
         
         visited.remove((i,j))
         
@@ -34,7 +34,7 @@ class Solution:
             for j in range(0,len(board[0])):
                 temp = ''
                 visited = set()
-                rq = self.bt(i,j,temp,word,board,visited)
+                rq = self.bt(i,j,word,board,visited)
                 
                 if rq:
                     return True
