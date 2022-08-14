@@ -1,53 +1,43 @@
+from collections import deque
+
 class Solution:
-    
-    def isValid(self,x,y,grid,visited):
-        
-        if x<0 or y<0 or x>=len(grid) or y>=len(grid[0]):
-            return False
-        
-        if (x,y) in visited:
-            return False
-        
-        
-        if grid[x][y] == '0':
-            return False
-        
-        return True
-    
     def numIslands(self, grid: List[List[str]]) -> int:
         
-        visited = set()
+        dx = [-1,0,1,0]
+        dy = [0,1,0,-1]
+        
         dq = deque()
         count = 0
-        
-        dx = [1,0,-1,0]
-        dy = [0,1,0,-1]
+        visited = set()
         
         for i in range(0,len(grid)):
             for j in range(0,len(grid[0])):
                 
-                if grid[i][j] == '1' and (i,j) not in visited:
+                if grid[i][j]=="1" and (i,j) not in visited:
+                    dq.append((i,j))
                     count+=1
-                    dq.append([i,j])
                     visited.add((i,j))
-                    
-                
-                # else:
-                    # continue 
                     
                 while dq:
                     
                     x,y = dq.popleft()
                     
                     for itr in range(4):
+                        tx = dx[itr] + x
+                        ty = dy[itr] + y
                         
-                        tx = x+dx[itr]
-                        ty = y+dy[itr]
-                        
-                        if self.isValid(tx,ty,grid,visited):
+                        if tx>=0 and tx<len(grid) and ty>=0 and ty<len(grid[0]):
                             
-                            dq.append([tx,ty])
-                            visited.add((tx,ty))
-                            
+                            if grid[tx][ty] == "1" and (tx,ty) not in visited:
+                                
+                                dq.append((tx,ty))
+                                visited.add((tx,ty))
+                                
         return count
-                        
+                                
+                    
+                    
+                
+            
+            
+            
