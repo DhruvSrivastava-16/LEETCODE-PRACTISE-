@@ -8,15 +8,14 @@ class Solution:
         
         dq = deque()
         count = 0
-        visited = set()
         
         for i in range(0,len(grid)):
             for j in range(0,len(grid[0])):
-                
-                if grid[i][j]=="1" and (i,j) not in visited:
+                # print(i,j,grid)
+                if grid[i][j]=="1":
                     dq.append((i,j))
+                    grid[i][j] = "0"
                     count+=1
-                    visited.add((i,j))
                     
                 while dq:
                     
@@ -28,10 +27,10 @@ class Solution:
                         
                         if tx>=0 and tx<len(grid) and ty>=0 and ty<len(grid[0]):
                             
-                            if grid[tx][ty] == "1" and (tx,ty) not in visited:
+                            if grid[tx][ty] == "1":
                                 
                                 dq.append((tx,ty))
-                                visited.add((tx,ty))
+                                grid[tx][ty] = "0"
                                 
         return count
                                 
