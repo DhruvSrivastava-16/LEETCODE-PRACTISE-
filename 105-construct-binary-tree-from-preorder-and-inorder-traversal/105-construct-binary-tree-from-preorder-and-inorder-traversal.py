@@ -5,24 +5,21 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    curIdx = 0
-    def helper(self,preorder,inorder,curIdx,l,r):
-        print(self.curIdx)
-        if l>r or self.curIdx>=len(preorder):
-            return None
+    
+    def builder(self,preorder,inorder,left,right):
+        if left>right or self.index>=len(preorder):
+            return 
         
-        rootV = preorder[self.curIdx]
-        root = TreeNode(rootV)
-        self.curIdx+=1
-
-        inorderLoc = inorder.index(rootV)
+        node = TreeNode(preorder[self.index])
+        loc = inorder.index(preorder[self.index])
+        self.index+=1
+        node.left = self.builder(preorder,inorder,left,loc-1)
+        node.right = self.builder(preorder,inorder,loc+1,right)
         
-        root.left = self.helper(preorder,inorder,curIdx,l,inorderLoc-1)
-        root.right = self.helper(preorder,inorder,curIdx,inorderLoc+1,r)
-        
-        return root
-
+        return node
+    
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        self.curIdx = 0
         
-        return self.helper(preorder, inorder, 0,0, len(preorder)-1)
+        self.index = 0
+        node = self.builder(preorder,inorder,0,len(preorder)-1)
+        return node
