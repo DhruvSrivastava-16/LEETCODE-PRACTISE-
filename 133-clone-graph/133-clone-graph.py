@@ -7,24 +7,23 @@ class Node:
 """
 
 class Solution:
-    
-    def dfs(self,node,visited):
+    def cloneDFS(self,node,visited):
         
         if not node:
-            return node
+            return 
         
         if node in visited:
             return visited[node]
         
-        newNode = Node(node.val,[])
+        newNode = Node(node.val ,[])
         visited[node] = newNode
+
         
         for n in node.neighbors:
-            tempN = self.dfs(n,visited)
-            newNode.neighbors.append(tempN)
+            newNode.neighbors.append(self.cloneDFS(n,visited))
             
         return newNode
-    
+            
     def cloneGraph(self, node: 'Node') -> 'Node':
         visited = dict()
-        return self.dfs(node,visited)
+        return self.cloneDFS(node,visited)
