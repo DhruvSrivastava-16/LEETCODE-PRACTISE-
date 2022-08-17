@@ -1,41 +1,36 @@
 class Solution:
-    def defaultRec(self):
-        return False
-
     
-    def DFS(self,node,graph,recStk,visited,Parent):
+    def dfs(self,visited,stack,node,graph,parent):
         visited.add(node)
-        
+        stack[node] = True
         for n in graph[node]:
             if n not in visited:
-                if self.DFS(n,graph,recStk,visited,node):
+                if self.dfs(visited,stack,n,graph,node):
                     return True
-            
-            elif Parent!=n:
-                print(Parent,n,node)
+                
+            elif parent != n:
                 return True
             
+        stack[node] = False
         return False
-        
+    
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        
         graph = defaultdict(list)
-        
         for edge in edges:
             graph[edge[0]].append(edge[1])
             graph[edge[1]].append(edge[0])
             
-        recStk = defaultdict(self.defaultRec)
-        
         visited = set()
-        cycle = False
-        cycle = self.DFS(0,graph,recStk,visited,None)
-        print(cycle,visited)
+        stack = {}
+        
+        cycle = self.dfs(visited,stack,0,graph,None)
+        
+        if len(visited)!=n:
+            return False
+        
         if cycle:
             return False
         
-        if len(visited)==n:
-            return True
+        return True
         
-        return False
         
