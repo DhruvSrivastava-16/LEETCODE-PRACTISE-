@@ -1,21 +1,30 @@
 class Solution:
     def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        StopBusMap = defaultdict(list)
         
-        if source==target:
+        if source == target:
             return 0
         
-        for i in range(len(routes)):
-            for j in routes[i]:
-                StopBusMap[j].append(i)
+        StopBusMap = defaultdict(list)
         
+        for bus in range(len(routes)):
+            for stop in routes[bus]:    
+                StopBusMap[stop].append(bus)
+                
+                
         graph = defaultdict(set)
         
-        for k,v in StopBusMap.items():
-            for b in v:
-                for i in v:
-                    if b!=i:
-                        graph[b].add(i)
+        for key, value in StopBusMap.items():
+            
+            for itr1 in value:
+                
+                for itr2 in value:
+                    
+                    if itr1!=itr2:
+                        
+                        graph[itr1].add(itr2)
+        
+        print(graph)
+
                 
         answer = float('inf')
         
