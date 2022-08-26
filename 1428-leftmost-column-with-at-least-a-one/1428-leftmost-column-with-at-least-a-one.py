@@ -8,60 +8,49 @@
 
 class Solution:
     
-    def binSearch(self,row,left,right,binaryMatrix):
+    def binarySearch(self,start,end,binaryMatrix,row):
         
-        Found = False
-        
-        while left<=right:
-            mid = (left+right)//2
-
+        mid = (start+end)//2
+        pos = -1
+        while start<=end:
+            mid = (start+end)//2
+            print(mid,row)
             if binaryMatrix.get(row,mid)==1:
-                Found = True
-                loc = mid
-                right = mid-1
+                pos = mid
+                end = mid - 1
                 
             else:
-                left = mid+1
+                start = mid+1
                 
-        if Found:
-            return loc
-        
-        return -1
-
-        
-        
-    
-    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
-        r, c = binaryMatrix.dimensions()
-        left = 0
-        right = c-1
-        rowN = 0
-        pos = -1
-        itr = 0
-        answer = []
-        
-        while itr<r:
-            if itr==0:
-                pos = self.binSearch(itr,left,right,binaryMatrix)
-                
-            elif pos==-1:
-                pos = self.binSearch(itr,left,right,binaryMatrix)
-                
-            elif pos>=0 and pos<c and binaryMatrix.get(itr,pos)==1:
-                right = pos-1
-                pos = self.binSearch(itr,left,right,binaryMatrix)
+        return pos
             
-            if pos>=0:
-                answer.append(pos)
-            itr+=1
+    def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         
-        if not answer:
+        row, col = binaryMatrix.dimensions()
+        
+        itr = 0
+        
+        start = 0
+        end = col -1 
+        
+        answer = None
+        
+        while itr<row:
+                
+            position = self.binarySearch(start,end,binaryMatrix,itr)
+            print(position,answer,itr)
+            if position!=-1:
+                if answer is not None:
+                    answer = min(answer,position)
+                else:
+                    answer = position
+                    
+            itr+=1
+            
+            
+        if answer is None:
             return -1
         
-        return min(answer)
+        return answer
                 
-                
             
-            
-            
-        
