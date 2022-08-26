@@ -12,22 +12,17 @@ class Solution:
         graph = defaultdict(set)
         
         for k,v in StopBusMap.items():
-            
             for b in v:
-                    
                 for i in v:
-                    
                     if b!=i:
                         graph[b].add(i)
                 
         answer = float('inf')
         
         for node in StopBusMap[source]:
-            
             dq = deque()
             dist = 1
             visit = set()
-            
             dq.append((node,dist))
             visit.add(node)
             
