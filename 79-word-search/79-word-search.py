@@ -1,44 +1,43 @@
 class Solution:
     
-    def bt(self,i,j,temp,board,visited):
+    
+    def find(self,visited,tempWord,i,j,board):
         
-        if len(temp)==0:
+        if len(tempWord) == 0:
             return True
         
-        if i<0 or j<0 or i>=len(board) or j>=len(board[0]):
-            return False
-        
         if (i,j) in visited:
+            return 
+        
+        if i<0 or i>=len(board):
             return False
         
-        if temp[0]!=board[i][j]:
+        if j<0 or j>=len(board[0]):
+            return False
+
+        if board[i][j] != tempWord[0]:
             return False
         
         visited.add((i,j))
         
-        left = self.bt(i,j-1,temp[1:],board,visited)
-        right = self.bt(i,j+1,temp[1:],board,visited)
-        down = self.bt(i-1,j,temp[1:],board,visited)
-        up = self.bt(i+1,j,temp[1:],board,visited)
+        left = self.find(visited,tempWord[1:],i,j-1,board)
+        right = self.find(visited,tempWord[1:],i,j+1,board)
+        top = self.find(visited,tempWord[1:],i+1,j,board)
+        down = self.find(visited,tempWord[1:],i-1,j,board)
         
         visited.remove((i,j))
         
-        return left or right or down or up
+        return left or right or top or down
         
-    
     def exist(self, board: List[List[str]], word: str) -> bool:
-        temp = []
-        visited = set()
         
-        for i in range(0,len(board)):
-            for j in range(0,len(board[0])):
-                temp = ''
+        
+        tempWord = word
+        
+        for i in range(len(board)):
+            for j in range(len(board[0])):
                 visited = set()
-                rq = self.bt(i,j,word,board,visited)
-                
-                if rq:
+                if self.find(visited,tempWord,i,j,board):
                     return True
                 
         return False
-        
-        
