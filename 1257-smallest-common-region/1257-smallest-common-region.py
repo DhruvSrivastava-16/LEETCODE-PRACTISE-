@@ -26,7 +26,6 @@ class Solution:
             
             if node not in visited:
                 itr+=1
-                print('ConnectedComponent',itr)
                 self.dfs(visited,ancestor,graph,node)
             
                 ancestors.append(ancestor)
@@ -40,7 +39,6 @@ class Solution:
             ancestorRegion1.add(Itr)
             Itr = ancestor[Itr]
             
-        print(ancestorRegion1)
             
         while True:
             
