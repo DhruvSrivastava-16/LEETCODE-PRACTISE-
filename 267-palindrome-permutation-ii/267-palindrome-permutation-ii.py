@@ -14,23 +14,16 @@ class Solution:
                     counter[key]-=1
                     self.backtrack(output,counter,s,key)
                     counter[key]+=1
-                    
-                else:
-                    
-                    if value>=2:
-                        counter[key]-=2
-                        self.backtrack(output,counter,s,key+temp+key)
-                        counter[key]+=2
+
                         
-        else:
             
-            for key, value in counter.items():
-                
-                if value>=2:
-                    
-                    counter[key]-=2
-                    self.backtrack(output,counter,s,key+temp+key)
-                    counter[key]+=2
+        for key, value in counter.items():
+
+            if value>=2:
+
+                counter[key]-=2
+                self.backtrack(output,counter,s,key+temp+key)
+                counter[key]+=2
                     
         
     def generatePalindromes(self, s: str) -> List[str]:
