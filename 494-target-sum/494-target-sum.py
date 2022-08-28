@@ -24,5 +24,4 @@ class Solution:
                     dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i-1]]
          
         print(dp)
-        return dp[len(nums)][temp]
-                
+        return dp[-1][-1]
