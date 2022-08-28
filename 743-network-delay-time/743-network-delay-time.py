@@ -10,21 +10,18 @@ class Solution:
         heap = []
         distance = {i:float('inf') for i in range(1,n+1)}
         distance[k] = 0
-        visited = set()
         
         heapq.heappush(heap,(0,k))
         
         while heap:
             
             dist, node = heapq.heappop(heap)
-            visited.add(node)
             
             for ne, weight in graph[node].items():
                 
                 if dist + weight < distance[ne]:
                     
                     distance[ne] = dist + weight
-                    visited.add(ne)
                     heapq.heappush(heap,(distance[ne],ne))
                     
         ans =  max(distance.values())
