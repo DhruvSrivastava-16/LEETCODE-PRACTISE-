@@ -41,7 +41,7 @@ class Solution:
         
         self.backtrack(output,counter,s,temp)
         
-        print(temp,output)
+        # print(temp,output)
         
         return output
 
