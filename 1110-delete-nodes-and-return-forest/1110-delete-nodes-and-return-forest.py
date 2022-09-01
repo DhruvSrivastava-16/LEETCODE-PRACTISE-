@@ -25,9 +25,6 @@ class Solution:
 
             if node.left:
                 answer.append(node.left)
-
-
-        # answer.append(parent)
     
             
             
@@ -37,10 +34,9 @@ class Solution:
         answer = []
         parent = None
         
-        got = self.dfs(answer,root,deleteSet,parent,None)
+        self.dfs(answer,root,deleteSet,parent,None)
         
         if root.val not in deleteSet:
             answer.append(root)
         
         return answer
-        # print(answer)
