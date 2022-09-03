@@ -8,7 +8,6 @@ class Solution:
         return False
     
     def dfs(self,word,pos,answer,temp):
-        print(temp)
         if pos==len(word):
             answer.append(temp[:])
             return
