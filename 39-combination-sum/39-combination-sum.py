@@ -1,25 +1,26 @@
 class Solution:
     
-    def combinations(self,temp,store,nums,summ,target,pos):
-        
-        if summ == target:
-            store.append(temp[:])
+    def backtrack(self,nums,answer,temp,target,summ,pos):
+        if summ==target:
+            answer.append(temp[:])
             return 
         
-        for i in range(pos,len(nums)):
-            if summ+nums[i]>target:
-                continue
-                
-            summ += nums[i]
-            temp.append(nums[i])
-            self.combinations(temp,store,nums,summ,target,i)
-            summ -= nums[i]
+        for itr in range(pos,len(nums)):
+            if nums[itr]+summ>target:
+                break
+            temp.append(nums[itr])
+            self.backtrack(nums,answer,temp,target,summ+nums[itr],itr)
             temp.pop()
+            
+        return
     
-    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         
+        answer = []
         temp = []
-        store = []
         summ = 0
-        self.combinations(temp,store,nums,summ,target,0)
-        return(store)
+        candidates.sort()
+        
+        self.backtrack(candidates,answer,temp,target,summ,0)
+        
+        return(answer)
