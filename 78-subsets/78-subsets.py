@@ -2,8 +2,8 @@ class Solution:
     
     def backtrack(self,size,loc,temp,answer,nums):
         if len(temp) == size:
-            if temp not in answer:
-                answer.append(temp[:])
+            # if temp not in answer:
+            answer.append(temp[:])
             return
             
         
@@ -21,10 +21,10 @@ class Solution:
         
         for size in range(len(nums)+1):
             
-            for loc in range(len(nums)):
-                
-                temp = []
-                
-                self.backtrack(size,loc,temp,answer,nums)
+            
+
+            temp = []
+
+            self.backtrack(size,0,temp,answer,nums)
                 
         return answer
