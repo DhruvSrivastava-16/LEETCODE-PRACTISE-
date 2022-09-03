@@ -1,21 +1,30 @@
 class Solution:
     
-    def bt(self,sz,ans,temp,pos,nums):
-        if len(temp)==sz:
-            ans.append(temp[:])
-            return 
+    def backtrack(self,size,loc,temp,answer,nums):
+        if len(temp) == size:
+            if temp not in answer:
+                answer.append(temp[:])
+            return
+            
         
-        for itr in range(pos,len(nums)):
+        
+        for itr in range(loc,len(nums)):
             temp.append(nums[itr])
-            self.bt(sz,ans,temp,itr+1,nums)
+            self.backtrack(size,itr+1,temp,answer,nums)
             temp.pop()
             
+    
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
+        answer = []
         temp = []
-        ans = []
-        for sz in range(0,len(nums)+1):
-            temp = []
-            self.bt(sz,ans,temp,0,nums)
+        
+        for size in range(len(nums)+1):
             
-        return(ans)
+            for loc in range(len(nums)):
+                
+                temp = []
+                
+                self.backtrack(size,loc,temp,answer,nums)
+                
+        return answer
