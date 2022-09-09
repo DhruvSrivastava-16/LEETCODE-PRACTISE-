@@ -26,7 +26,6 @@ class Solution:
             Flag = False
             for k,v in maxFreqMap.items():
                 if maxFreqMap[k]>temp[k]:
-                    print(maxFreqMap,temp,k)
                     Flag = True
                     break
                     
