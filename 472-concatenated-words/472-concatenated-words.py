@@ -12,8 +12,7 @@ class Solution:
             
             if word[loc:idx+1] in wordSet and self.dfs(idx+1,word,count+1,wordSet):
                 return True
-            
-            
+
         return False
             
         
@@ -21,8 +20,7 @@ class Solution:
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
         wordSet = set(words)
         answer = []
-        
-        
+
         for i in range(len(words)):
             count = 0
             if self.dfs(0,words[i],count,wordSet):
