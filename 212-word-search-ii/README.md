@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/word-search-ii/">212. Word Search II</a></h2><h3>Hard</h3><hr><div><p>Given an <code>m x n</code> <code>board</code>&nbsp;of characters and a list of strings <code>words</code>, return <em>all words on the board</em>.</p>
+<h2><a href="https://leetcode.com/problems/word-search-ii/solution/">212. Word Search II</a></h2><h3>Hard</h3><hr><div><p>Given an <code>m x n</code> <code>board</code>&nbsp;of characters and a list of strings <code>words</code>, return <em>all words on the board</em>.</p>
 
 <p>Each word must be constructed from letters of sequentially adjacent cells, where <strong>adjacent cells</strong> are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.</p>
 
