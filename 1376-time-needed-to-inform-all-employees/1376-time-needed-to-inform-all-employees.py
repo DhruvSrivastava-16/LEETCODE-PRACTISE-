@@ -18,7 +18,7 @@ class Solution:
         
         for node in range(n):
             graph[manager[node]][node] = informTime[node]
-        print(graph)    
+        # print(graph)    
         root = list(graph[-1].keys())[0]
         rootWt = graph[-1][root]
         
