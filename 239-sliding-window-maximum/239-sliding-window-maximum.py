@@ -3,17 +3,17 @@ class Solution:
         answer = []
         dq = deque()
         
-        for itr in range(len(nums)):
+        for i in range(len(nums)):
             
-            while dq and nums[dq[-1][1]]<=nums[itr]:
+            while dq and nums[dq[-1][1]]<=nums[i]:
                 dq.pop()
                 
-            dq.append((nums[itr], itr))
+            dq.append((nums[i],i))
             
-            if dq[0][1]==itr-k:
+            if dq[0][1] <= i-k:
                 dq.popleft()
                 
-            if itr>=k-1:
+            if i>=k-1:
                 answer.append(nums[dq[0][1]])
                 
         return answer
