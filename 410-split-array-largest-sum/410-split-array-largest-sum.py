@@ -1,5 +1,4 @@
 class Solution:
-    
     def bucketsRqd(self,nums,mid):
         needed = 1
         summ = 0
@@ -14,11 +13,7 @@ class Solution:
                 summ+=nums[i]
                 
         return needed
-                
-        
-        
     def splitArray(self, nums: List[int], m: int) -> int:
-        
         left = max(nums)
         right = sum(nums)
         
@@ -34,5 +29,5 @@ class Solution:
                 left = mid+1
                 
         return answer
-        
-        
+            
+            
