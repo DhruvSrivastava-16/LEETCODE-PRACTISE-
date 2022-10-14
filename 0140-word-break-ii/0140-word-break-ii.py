@@ -6,6 +6,8 @@ class Solution:
         wordSet = set(wordDict)
         
         dp = [[]]*(len(s)+1)
+        # print(dp)
+        
         dp[0] = " "
         
         for end in range(1,len(s)+1):
